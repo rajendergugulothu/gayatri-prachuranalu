@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gayatri Prachuranalu — గాయత్రీ ప్రచురణాలు</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;700&family=Noto+Sans+Telugu:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --saffron: #D97706;
+    --saffron-light: #FDE68A;
+    --saffron-dark: #92400E;
+    --crimson: #991B1B;
+    --ivory: #FEFCE8;
+    --parchment: #FEF3C7;
+    --deep-brown: #1C0A00;
+    --mid-brown: #78350F;
+    --text-body: #3B1A08;
+    --text-muted: #92400E;
+    --border: rgba(180,120,40,0.3);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    font-family: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+    background: var(--ivory);
+    color: var(--text-body);
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--deep-brown);
+    border-bottom: 3px solid var(--saffron);
+    position: sticky; top: 0; z-index: 200;
+  }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-brand { display:flex; align-items:center; gap:12px; text-decoration:none; }
+  .nav-logo {
+    width:40px; height:40px; background:var(--saffron); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Cinzel',Georgia,serif; font-size:17px; font-weight:700;
+    color:var(--deep-brown); flex-shrink:0;
+  }
+  .nav-title { font-family:'Cinzel',Georgia,serif; font-size:14px; color:#fff; line-height:1.2; }
+  .nav-title span { display:block; font-family:'Noto Sans Telugu','Noto Sans',sans-serif; font-size:10px; color:var(--saffron-light); font-weight:400; }
+  .nav-links { display:flex; align-items:center; gap:1.25rem; list-style:none; }
+  .nav-links a { color:#D1C4B0; text-decoration:none; font-size:13px; letter-spacing:.04em; transition:color .2s; }
+  .nav-links a:hover { color:var(--saffron-light); }
+  .nav-btn { background:var(--saffron)!important; color:var(--deep-brown)!important; padding:6px 16px!important; border-radius:4px; font-weight:700; font-size:11px!important; letter-spacing:.08em; text-transform:uppercase; }
+  .nav-btn:hover { background:#F59E0B!important; }
+  .nav-ham { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
+  .nav-ham span { display:block; width:22px; height:2px; background:var(--saffron-light); }
+  .mob-menu { display:none; flex-direction:column; background:#0D0200; border-top:1px solid rgba(217,119,6,.2); }
+  .mob-menu.open { display:flex; }
+  .mob-menu a { color:#D1C4B0; text-decoration:none; padding:.75rem 2rem; font-size:14px; border-bottom:1px solid rgba(217,119,6,.1); }
+  .mob-menu a:hover { background:rgba(217,119,6,.1); color:var(--saffron-light); }
+  .mob-join { background:var(--saffron)!important; color:var(--deep-brown)!important; text-align:center; font-weight:700; font-family:'Cinzel',Georgia,serif; }
+
+  /* HERO */
+  .hero {
+    background: var(--deep-brown);
+    background-image: radial-gradient(ellipse at 20% 50%,rgba(180,83,9,.25) 0%,transparent 60%),
+                      radial-gradient(ellipse at 80% 20%,rgba(146,64,14,.2) 0%,transparent 50%);
+    min-height: 88vh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:4rem 2rem 5rem; position:relative; overflow:hidden;
+  }
+  .hero-pattern {
+    position:absolute; inset:0; pointer-events:none;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23D97706' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-glow1, .hero-glow2 {
+    position:absolute; border-radius:50%; filter:blur(80px); pointer-events:none;
+    animation: glowpulse 8s ease-in-out infinite;
+  }
+  .hero-glow1 { width:500px; height:500px; background:rgba(180,83,9,.2); left:-100px; top:-100px; }
+  .hero-glow2 { width:400px; height:400px; background:rgba(146,64,14,.15); right:-80px; bottom:0; animation-delay:4s; }
+  @keyframes glowpulse { 0%,100%{opacity:.6;transform:scale(1)} 50%{opacity:1;transform:scale(1.1)} }
+
+  .hero-content { position:relative; z-index:1; max-width:740px; }
+  .hero-om {
+    font-family:'Noto Sans Telugu','Noto Sans',sans-serif;
+    font-size:3.5rem; color:var(--saffron); line-height:1; margin-bottom:1rem;
+    text-shadow:0 0 40px rgba(217,119,6,.5);
+    animation:fadedown .8s ease both;
+  }
+  .hero h1 {
+    font-family:'Cinzel',Georgia,serif;
+    font-size:clamp(2rem,5vw,3.5rem);
+    color:#fff; letter-spacing:.04em; font-weight:700; line-height:1.15;
+    animation:fadedown .8s ease .1s both;
+  }
+  .hero h1 span {
+    display:block; font-family:'Noto Sans Telugu','Noto Sans',sans-serif;
+    font-size:clamp(1.1rem,2.5vw,1.8rem);
+    color:var(--saffron-light); font-weight:400; margin-top:.4rem;
+  }
+  @keyframes fadedown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+
+  .hero-div {
+    display:flex; align-items:center; gap:16px; justify-content:center;
+    margin:1.75rem auto; animation:fadedown .8s ease .2s both;
+  }
+  .div-line { width:80px; height:1.5px; background:linear-gradient(90deg,transparent,var(--saffron)); display:block; }
+  .div-line.r { background:linear-gradient(90deg,var(--saffron),transparent); }
+  .div-lotus { color:var(--saffron); font-size:1.25rem; }
+
+  .hero-tagline {
+    font-size:clamp(.95rem,2vw,1.1rem); color:#C4B08A;
+    max-width:560px; margin:0 auto 2.5rem; font-style:italic;
+    animation:fadedown .8s ease .3s both;
+  }
+  .hero-ctas { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; animation:fadedown .8s ease .4s both; }
+  .hero-trust { margin-top:2rem; font-size:.75rem; color:#5A4020; animation:fadedown .8s ease .5s both; }
+  .hero-trust .dot { margin:0 .5rem; }
+
+  /* BUTTONS */
+  .btn-primary {
+    background:var(--saffron); color:var(--deep-brown);
+    padding:13px 28px; border-radius:4px;
+    font-family:'Cinzel',Georgia,serif; font-weight:600; font-size:13px;
+    letter-spacing:.08em; text-transform:uppercase;
+    border:none; cursor:pointer; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px;
+    transition:background .2s,transform .2s,box-shadow .2s;
+  }
+  .btn-primary:hover { background:#F59E0B; transform:translateY(-2px); box-shadow:0 6px 20px rgba(217,119,6,.4); }
+  .btn-outline {
+    background:transparent; color:var(--saffron-light);
+    padding:13px 28px; border-radius:4px;
+    font-family:'Cinzel',Georgia,serif; font-weight:600; font-size:13px;
+    letter-spacing:.08em; text-transform:uppercase;
+    border:1.5px solid var(--saffron);
+    cursor:pointer; text-decoration:none; display:inline-block;
+    transition:background .2s,transform .2s;
+  }
+  .btn-outline:hover { background:rgba(217,119,6,.2); transform:translateY(-2px); }
+
+  /* STATS */
+  .stats-bar {
+    background:var(--parchment); border-bottom:1px solid var(--border);
+    padding:1.75rem 2rem; display:flex; justify-content:center; align-items:center;
+    gap:0; flex-wrap:wrap;
+  }
+  .stat-item { text-align:center; padding:.5rem 2.5rem; }
+  .stat-num { font-family:'Cinzel',Georgia,serif; font-size:2rem; font-weight:700; color:var(--saffron-dark); line-height:1; }
+  .stat-label { font-size:.7rem; color:var(--text-muted); letter-spacing:.12em; text-transform:uppercase; margin-top:6px; }
+  .stat-sep { width:1px; height:40px; background:var(--border); }
+
+  /* SECTIONS */
+  section { padding:5rem 2rem; }
+  .sec-hd { text-align:center; margin-bottom:3.5rem; }
+  .sec-label { font-size:.68rem; letter-spacing:.25em; text-transform:uppercase; color:var(--saffron); font-family:'Cinzel',Georgia,serif; margin-bottom:.75rem; }
+  .sec-title { font-family:'Cinzel',Georgia,serif; font-size:clamp(1.4rem,3vw,2.1rem); color:var(--deep-brown); font-weight:600; }
+  .sec-title span { display:block; font-family:'Noto Sans Telugu','Noto Sans',sans-serif; font-size:.75em; color:var(--mid-brown); font-weight:300; margin-top:6px; }
+  .orn { display:flex; align-items:center; gap:12px; justify-content:center; margin-top:1rem; }
+  .orn-line { width:60px; height:1px; background:var(--border); display:block; }
+  .orn-dia { width:7px; height:7px; background:var(--saffron); transform:rotate(45deg); display:block; flex-shrink:0; }
+  .sec-cta { text-align:center; margin-top:3rem; }
+
+  /* BOOKS */
+  .books-section { background:#fff; }
+  .books-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:1.5rem; max-width:1100px; margin:0 auto; }
+  .book-card {
+    background:var(--ivory); border:1px solid var(--border); border-radius:8px;
+    overflow:hidden; transition:transform .25s,box-shadow .25s,border-color .25s; cursor:pointer;
+    box-shadow:0 2px 8px rgba(120,53,15,.08);
+  }
+  .book-card:hover { transform:translateY(-6px); box-shadow:0 16px 48px rgba(120,53,15,.2); border-color:rgba(217,119,6,.5); }
+  .book-cover {
+    aspect-ratio:2/3; display:flex; align-items:center; justify-content:center;
+    flex-direction:column; padding:1.5rem 1rem; position:relative; overflow:hidden;
+  }
+  .book-cover::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,255,255,.08) 0%,transparent 60%); }
+  .book-cover::after { content:''; position:absolute; left:0;top:0;bottom:0; width:8px; background:rgba(0,0,0,.25); }
+  .bk-icon { font-size:2.25rem; margin-bottom:.875rem; position:relative; z-index:1; }
+  .bk-title { font-family:'Noto Sans Telugu','Noto Sans',sans-serif; font-size:.9rem; font-weight:600; color:#fff; text-align:center; text-shadow:0 1px 3px rgba(0,0,0,.4); line-height:1.45; position:relative; z-index:1; }
+  .bk-en { font-size:.62rem; font-style:italic; color:rgba(255,255,255,.72); margin-top:7px; text-align:center; position:relative; z-index:1; }
+  .book-info { padding:.875rem 1rem; border-top:1px solid var(--border); }
+  .bk-author { font-size:.68rem; color:var(--text-muted); letter-spacing:.05em; text-transform:uppercase; }
+  .bk-price-row { display:flex; align-items:center; justify-content:space-between; margin-top:.5rem; }
+  .bk-price { font-family:'Cinzel',Georgia,serif; font-size:.9rem; color:var(--saffron-dark); font-weight:600; }
+  .badge-free { background:#DCFCE7; color:#166534; font-size:.62rem; padding:2px 8px; border-radius:99px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; }
+  .badge-pdf { background:var(--parchment); color:var(--mid-brown); font-size:.62rem; padding:2px 8px; border-radius:99px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; border:1px solid var(--border); }
+  .btn-read { width:100%; background:var(--saffron); color:var(--deep-brown); border:none; padding:8px; font-family:'Cinzel',Georgia,serif; font-size:10.5px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; margin-top:.625rem; border-radius:4px; transition:background .2s; }
+  .btn-read:hover { background:#F59E0B; }
+
+  /* CATEGORIES */
+  .cat-section { background:var(--parchment); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+  .cat-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(145px,1fr)); gap:1rem; max-width:960px; margin:0 auto; }
+  .cat-card { background:#fff; border:1px solid var(--border); border-radius:8px; padding:1.5rem 1rem; text-align:center; cursor:pointer; transition:border-color .2s,background .2s,transform .2s,box-shadow .2s; text-decoration:none; color:var(--text-body); display:block; }
+  .cat-card:hover { border-color:var(--saffron); background:var(--ivory); transform:translateY(-3px); box-shadow:0 8px 24px rgba(120,53,15,.12); }
+  .cat-icon { font-size:1.875rem; margin-bottom:.625rem; display:block; }
+  .cat-te { font-family:'Noto Sans Telugu','Noto Sans',sans-serif; font-size:.85rem; font-weight:500; color:var(--deep-brown); display:block; }
+  .cat-en { font-size:.63rem; color:var(--text-muted); margin-top:3px; display:block; }
+  .cat-count { font-size:.63rem; color:var(--saffron); margin-top:6px; font-family:'Cinzel',Georgia,serif; display:block; }
+
+  /* HOW */
+  .how-section { background:var(--deep-brown); }
+  .how-section .sec-title { color:#fff; }
+  .how-section .sec-title span { color:var(--saffron-light); }
+  .how-section .sec-label { color:var(--saffron-light); }
+  .how-section .orn-line { background:rgba(217,119,6,.3); }
+  .steps-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1.5rem; max-width:960px; margin:0 auto; }
+  .step-card { background:rgba(255,255,255,.04); border:1px solid rgba(217,119,6,.22); border-radius:10px; padding:1.875rem 1.5rem; position:relative; transition:background .2s,transform .2s; }
+  .step-card:hover { background:rgba(255,255,255,.07); transform:translateY(-3px); }
+  .step-num { font-family:'Cinzel',Georgia,serif; font-size:3rem; font-weight:700; color:rgba(217,119,6,.15); line-height:1; position:absolute; top:1rem; right:1.25rem; }
+  .step-icon { font-size:2rem; margin-bottom:1rem; }
+  .step-title { font-family:'Cinzel',Georgia,serif; font-size:.9rem; color:var(--saffron-light); font-weight:600; letter-spacing:.05em; margin-bottom:.5rem; }
+  .step-desc { font-size:.875rem; color:#A89070; line-height:1.65; }
+
+  /* PRICING */
+  .price-section { background:#fff; }
+  .price-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(255px,1fr)); gap:1.5rem; max-width:900px; margin:0 auto; }
+  .price-card { border:1.5px solid var(--border); border-radius:10px; padding:2.25rem 1.875rem; background:var(--ivory); position:relative; transition:transform .2s,box-shadow .2s; }
+  .price-card:hover { box-shadow:0 8px 24px rgba(120,53,15,.15); transform:translateY(-3px); }
+  .price-card.featured { border-color:var(--saffron); background:var(--parchment); }
+  .feat-badge { position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:var(--saffron); color:var(--deep-brown); font-family:'Cinzel',Georgia,serif; font-size:9.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:3px 18px; border-radius:99px; white-space:nowrap; }
+  .plan-name { font-family:'Cinzel',Georgia,serif; font-size:1.1rem; color:var(--deep-brown); font-weight:600; margin-bottom:4px; }
+  .plan-desc { font-size:.8rem; color:var(--text-muted); font-style:italic; margin-bottom:1.5rem; }
+  .plan-amount { font-family:'Cinzel',Georgia,serif; font-size:2.6rem; font-weight:700; color:var(--saffron-dark); line-height:1; }
+  .plan-period { font-size:.8rem; color:var(--text-muted); }
+  .plan-price { margin-bottom:1.5rem; }
+  .plan-feats { list-style:none; margin-bottom:1.875rem; }
+  .plan-feats li { font-size:.875rem; padding:7px 0; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:8px; }
+  .plan-feats li:last-child { border-bottom:none; }
+  .ck { color:#16A34A; } .cx { color:#DC2626; font-size:.9rem; }
+  .btn-plan { width:100%; background:var(--saffron); color:var(--deep-brown); border:none; padding:12px; font-family:'Cinzel',Georgia,serif; font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; border-radius:4px; cursor:pointer; transition:background .2s,transform .2s; }
+  .btn-plan:hover { background:#F59E0B; }
+  .btn-plan.dark { background:var(--saffron-dark); }
+  .btn-plan.dark:hover { background:var(--crimson); }
+  .price-note { text-align:center; margin-top:2rem; font-size:.8rem; color:var(--text-muted); font-style:italic; }
+
+  /* TESTIMONIALS */
+  .testi-section { background:var(--parchment); border-top:1px solid var(--border); }
+  .testi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.25rem; max-width:960px; margin:0 auto; }
+  .testi-card { background:#fff; border:1px solid var(--border); border-radius:10px; padding:1.625rem; transition:box-shadow .2s,transform .2s; }
+  .testi-card:hover { box-shadow:0 8px 24px rgba(120,53,15,.12); transform:translateY(-2px); }
+  .testi-stars { color:var(--saffron); font-size:.875rem; margin-bottom:.875rem; }
+  .testi-text { font-size:.875rem; color:var(--text-body); font-style:italic; line-height:1.7; margin-bottom:1.125rem; }
+  .testi-author { display:flex; align-items:center; gap:10px; }
+  .auth-av { width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Cinzel',Georgia,serif; font-size:12px; font-weight:700; color:#fff; flex-shrink:0; }
+  .auth-name { font-size:.8rem; font-weight:700; color:var(--deep-brown); }
+  .auth-loc { font-size:.7rem; color:var(--text-muted); }
+
+  /* NEWSLETTER */
+  .nl-section { background:var(--deep-brown); padding:3.5rem 2rem; border-top:3px solid var(--saffron); }
+  .nl-inner { max-width:700px; margin:0 auto; display:flex; align-items:center; gap:2rem; flex-wrap:wrap; }
+  .nl-text h3 { font-family:'Cinzel',Georgia,serif; font-size:1.2rem; color:#fff; margin-bottom:.5rem; }
+  .nl-text p { font-size:.875rem; color:#A89070; }
+  .nl-form { display:flex; gap:.75rem; flex-wrap:wrap; }
+  .nl-input { flex:1; min-width:220px; padding:10px 13px; border:1px solid rgba(217,119,6,.3); border-radius:4px; background:rgba(255,255,255,.08); font-size:.9rem; color:#fff; outline:none; }
+  .nl-input:focus { border-color:var(--saffron); }
+  .nl-input::placeholder { color:#7A6040; }
+
+  /* FOOTER */
+  footer { background:var(--deep-brown); color:#9A7D5A; padding:4rem 2rem 2rem; border-top:3px solid var(--saffron); }
+  .foot-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:2rem; max-width:1100px; margin:0 auto 2.5rem; }
+  .foot-brand { font-family:'Cinzel',Georgia,serif; font-size:1.1rem; color:#fff; margin-bottom:4px; }
+  .foot-brand-te { font-family:'Noto Sans Telugu','Noto Sans',sans-serif; font-size:.875rem; color:var(--saffron-light); margin-bottom:1rem; }
+  .foot-desc { font-size:.8rem; line-height:1.7; }
+  .foot-col-title { font-family:'Cinzel',Georgia,serif; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--saffron-light); margin-bottom:1.125rem; }
+  .foot-links { list-style:none; }
+  .foot-links li { margin-bottom:.5rem; }
+  .foot-links a { text-decoration:none; color:#9A7D5A; font-size:.8rem; transition:color .2s; cursor:pointer; }
+  .foot-links a:hover { color:var(--saffron-light); }
+  .foot-bottom { border-top:1px solid rgba(180,120,40,.2); padding-top:1.5rem; display:flex; justify-content:space-between; align-items:center; max-width:1100px; margin:0 auto; font-size:.75rem; flex-wrap:wrap; gap:.75rem; }
+  .foot-bottom a { color:var(--saffron-light); text-decoration:none; }
+
+  /* MODALS */
+  .modal-overlay { display:none; position:fixed; inset:0; background:rgba(28,10,0,.8); z-index:1000; align-items:center; justify-content:center; padding:1rem; backdrop-filter:blur(4px); }
+  .modal-overlay.active { display:flex; }
+  .modal { background:var(--ivory); border:1px solid var(--border); border-radius:12px; padding:2.5rem 2rem; width:100%; max-width:440px; position:relative; animation:slideup .3s ease; box-shadow:0 24px 64px rgba(0,0,0,.5); }
+  @keyframes slideup { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+  .modal-close { position:absolute; top:1rem; right:1rem; background:none; border:none; font-size:1.25rem; cursor:pointer; color:var(--text-muted); }
+  .modal-logo { text-align:center; margin-bottom:1.5rem; }
+  .modal-logo-circle { width:58px; height:58px; background:var(--saffron); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-family:'Cinzel',Georgia,serif; font-size:22px; font-weight:700; color:var(--deep-brown); margin-bottom:.875rem; }
+  .modal-title { font-family:'Cinzel',Georgia,serif; font-size:1.2rem; color:var(--deep-brown); margin-bottom:4px; }
+  .modal-sub { font-size:.8rem; color:var(--text-muted); font-style:italic; margin-bottom:1.875rem; font-family:'Noto Sans Telugu','Noto Sans',sans-serif; }
+  .tabs { display:flex; border-bottom:2px solid var(--border); margin-bottom:1.5rem; }
+  .tab-btn { flex:1; background:none; border:none; padding:.625rem; font-family:'Cinzel',Georgia,serif; font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-muted); cursor:pointer; border-bottom:2.5px solid transparent; margin-bottom:-2px; transition:all .2s; }
+  .tab-btn.active { color:var(--saffron-dark); border-bottom-color:var(--saffron); }
+  .form-group { margin-bottom:1rem; }
+  .form-label { display:block; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; color:var(--text-muted); margin-bottom:6px; font-family:'Cinzel',Georgia,serif; }
+  .form-input { width:100%; padding:10px 13px; border:1px solid var(--border); border-radius:4px; background:#fff; font-family:'Libre Baskerville',Georgia,serif; font-size:.9rem; color:var(--text-body); outline:none; transition:border-color .2s; }
+  .form-input:focus { border-color:var(--saffron); }
+  .form-submit { width:100%; background:var(--saffron); color:var(--deep-brown); border:none; padding:12px; font-family:'Cinzel',Georgia,serif; font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; border-radius:4px; cursor:pointer; margin-top:.5rem; transition:background .2s; }
+  .form-submit:hover { background:#F59E0B; }
+  .form-alt { text-align:center; font-size:.8rem; color:var(--text-muted); margin-top:1rem; }
+  .form-alt a { color:var(--saffron-dark); text-decoration:none; cursor:pointer; }
+  .div-or { display:flex; align-items:center; gap:12px; margin:1rem 0; color:var(--text-muted); font-size:.75rem; }
+  .div-or::before,.div-or::after { content:''; flex:1; height:1px; background:var(--border); }
+  .social-btn { width:100%; background:#fff; border:1px solid var(--border); border-radius:4px; padding:10px; font-size:.85rem; color:var(--text-body); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; transition:background .15s; }
+  .social-btn:hover { background:var(--parchment); }
+  /* download modal */
+  .dl-modal { max-width:380px; }
+  .dl-book-title { font-family:'Noto Sans Telugu','Noto Sans',sans-serif; font-size:1.1rem; color:var(--deep-brown); text-align:center; margin-bottom:4px; font-weight:600; }
+  .dl-author { text-align:center; font-size:.8rem; color:var(--text-muted); font-style:italic; }
+  .dl-price-box { text-align:center; margin:1.25rem 0; padding:1.125rem; background:var(--parchment); border-radius:8px; border:1px solid var(--border); }
+  .dl-price { font-family:'Cinzel',Georgia,serif; font-size:2.25rem; color:var(--saffron-dark); font-weight:700; display:block; }
+  .dl-price-note { font-size:.72rem; color:var(--text-muted); font-style:italic; }
+  .pay-label { font-size:.7rem; color:var(--text-muted); margin-bottom:.75rem; font-family:'Cinzel',Georgia,serif; letter-spacing:.06em; text-transform:uppercase; }
+  .pay-grid { display:grid; grid-template-columns:1fr 1fr; gap:.75rem; margin-bottom:1rem; }
+  .pay-method { border:1.5px solid var(--border); border-radius:4px; padding:.75rem; text-align:center; cursor:pointer; transition:all .15s; font-size:.8rem; color:var(--text-body); }
+  .pay-method:hover,.pay-method.selected { border-color:var(--saffron); background:var(--parchment); }
+  .pay-icon { font-size:1.5rem; display:block; margin-bottom:4px; }
+  .secure-note { text-align:center; font-size:.7rem; color:var(--text-muted); margin-top:.875rem; }
+
+  /* NOTIFICATION */
+  .notif { display:none; position:fixed; top:80px; right:1.5rem; background:var(--deep-brown); border:1px solid var(--saffron); border-radius:8px; padding:.875rem 1.25rem; color:var(--saffron-light); font-size:.85rem; z-index:2000; max-width:300px; box-shadow:0 16px 48px rgba(0,0,0,.4); animation:notifin .3s ease; }
+  @keyframes notifin { from{opacity:0;transform:translateX(30px)} to{opacity:1;transform:translateX(0)} }
+
+  /* RESPONSIVE */
+  @media(max-width:900px){ .foot-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:768px){
+    .nav-links{display:none;} .nav-ham{display:flex;}
+    .hero{padding:3rem 1.5rem 4rem; min-height:80vh;}
+    section{padding:3.5rem 1.25rem;}
+    .stat-sep{display:none;}
+    .stat-item{padding:.5rem 1.25rem; width:50%;}
+    .stats-bar{flex-wrap:wrap; justify-content:center;}
+    .nl-inner{flex-direction:column; align-items:flex-start;}
+  }
+  @media(max-width:480px){
+    .foot-grid{grid-template-columns:1fr;}
+    .price-grid{grid-template-columns:1fr;}
+    .hero h1{font-size:1.8rem;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <div class="nav-logo">గా</div>
+      <div class="nav-title">Gayatri Prachuranalu<span>గాయత్రీ ప్రచురణాలు</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#books">Library</a></li>
+      <li><a href="#categories">Categories</a></li>
+      <li><a href="#pricing">Plans</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#" onclick="openModal('login')">Sign In</a></li>
+      <li><a href="#" class="nav-btn" onclick="openModal('signup')">Join Free</a></li>
+    </ul>
+    <button class="nav-ham" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mob-menu" id="mobMenu">
+    <a href="#books">Library</a>
+    <a href="#categories">Categories</a>
+    <a href="#pricing">Plans</a>
+    <a href="#how">How It Works</a>
+    <a href="#" onclick="openModal('login')">Sign In</a>
+    <a href="#" onclick="openModal('signup')" class="mob-join">Join Free</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-glow1"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-content">
+    <div class="hero-om">ॐ</div>
+    <h1>Gayatri Prachuranalu<span>గాయత్రీ ప్రచురణాలు</span></h1>
+    <div class="hero-div">
+      <span class="div-line"></span>
+      <span class="div-lotus">✿</span>
+      <span class="div-line r"></span>
+    </div>
+    <p class="hero-tagline">A sacred library of Telugu spiritual literature, devotional texts, and classical works — preserved for generations, accessible to all.</p>
+    <div class="hero-ctas">
+      <a href="#books" class="btn-primary">📚 Browse the Library</a>
+      <a href="#" class="btn-outline" onclick="openModal('signup'); return false;">Create Free Account</a>
+    </div>
+    <div class="hero-trust">
+      🔒 Secure &amp; Trusted
+      <span class="dot">·</span>
+      📥 Instant Downloads
+      <span class="dot">·</span>
+      💳 Pay Per Book
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num" id="sn1">500+</div>
+    <div class="stat-label">Books Available</div>
+  </div>
+  <div class="stat-sep"></div>
+  <div class="stat-item">
+    <div class="stat-num" id="sn2">12,000+</div>
+    <div class="stat-label">Registered Readers</div>
+  </div>
+  <div class="stat-sep"></div>
+  <div class="stat-item">
+    <div class="stat-num" id="sn3">25+</div>
+    <div class="stat-label">Categories</div>
+  </div>
+  <div class="stat-sep"></div>
+  <div class="stat-item">
+    <div class="stat-num">₹30</div>
+    <div class="stat-label">PDFs From</div>
+  </div>
+</div>
+
+<!-- BOOKS -->
+<section class="books-section" id="books">
+  <div class="sec-hd">
+    <div class="sec-label">Our Collection</div>
+    <h2 class="sec-title">Featured Books <span>ప్రముఖ పుస్తకాలు</span></h2>
+    <div class="orn"><span class="orn-line"></span><span class="orn-dia"></span><span class="orn-line"></span></div>
+  </div>
+  <div class="books-grid" id="booksGrid"></div>
+  <div class="sec-cta">
+    <a href="#" class="btn-primary" onclick="showNotif('Full library coming soon! 📚')">View All 500+ Books →</a>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="cat-section" id="categories">
+  <div class="sec-hd">
+    <div class="sec-label">Browse By</div>
+    <h2 class="sec-title">Categories <span>విభాగాలు</span></h2>
+    <div class="orn"><span class="orn-line"></span><span class="orn-dia"></span><span class="orn-line"></span></div>
+  </div>
+  <div class="cat-grid">
+    <a class="cat-card" href="#">
+      <span class="cat-icon">🙏</span>
+      <span class="cat-te">భక్తి సాహిత్యం</span>
+      <span class="cat-en">Devotional Literature</span>
+      <span class="cat-count">142 books</span>
+    </a>
+    <a class="cat-card" href="#">
+      <span class="cat-icon">📿</span>
+      <span class="cat-te">స్తోత్రాలు</span>
+      <span class="cat-en">Stotras &amp; Mantras</span>
+      <span class="cat-count">98 books</span>
+    </a>
+    <a class="cat-card" href="#">
+      <span class="cat-icon">📖</span>
+      <span class="cat-te">పురాణాలు</span>
+      <span class="cat-en">Puranas</span>
+      <span class="cat-count">76 books</span>
+    </a>
+    <a class="cat-card" href="#">
+      <span class="cat-icon">🧘</span>
+      <span class="cat-te">యోగ &amp; వేదాంత</span>
+      <span class="cat-en">Yoga &amp; Vedanta</span>
+      <span class="cat-count">64 books</span>
+    </a>
+    <a class="cat-card" href="#">
+      <span class="cat-icon">✍️</span>
+      <span class="cat-te">తెలుగు కవిత్వం</span>
+      <span class="cat-en">Telugu Poetry</span>
+      <span class="cat-count">55 books</span>
+    </a>
+    <a class="cat-card" href="#">
+      <span class="cat-icon">🌸</span>
+      <span class="cat-te">నవలలు</span>
+      <span class="cat-en">Novels</span>
+      <span class="cat-count">48 books</span>
+    </a>
+    <a class="cat-card" href="#">
+      <span class="cat-icon">🏛️</span>
+      <span class="cat-te">చరిత్ర</span>
+      <span class="cat-en">History</span>
+      <span class="cat-count">37 books</span>
+    </a>
+    <a class="cat-card" href="#">
+      <span class="cat-icon">👶</span>
+      <span class="cat-te">పిల్లల పుస్తకాలు</span>
+      <span class="cat-en">Children's Books</span>
+      <span class="cat-count">30 books</span>
+    </a>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how">
+  <div class="sec-hd">
+    <div class="sec-label">Getting Started</div>
+    <h2 class="sec-title">How It Works <span>ఎలా ఉపయోగించాలి</span></h2>
+    <div class="orn"><span class="orn-line" style="background:rgba(217,119,6,.3)"></span><span class="orn-dia" style="background:var(--saffron-light)"></span><span class="orn-line" style="background:rgba(217,119,6,.3)"></span></div>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <div class="step-icon">👤</div>
+      <div class="step-title">Create an Account</div>
+      <p class="step-desc">Register for free with your email. Choose from flexible plans — free browsing or premium access.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <div class="step-icon">📚</div>
+      <div class="step-title">Browse the Library</div>
+      <p class="step-desc">Explore 500+ Telugu books across spiritual, devotional, literary, and classical categories. Read previews free.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <div class="step-icon">📄</div>
+      <div class="step-title">Download PDF</div>
+      <p class="step-desc">Pay a small amount (₹30–₹99) to download the PDF of any book to your device — yours to keep forever.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">04</div>
+      <div class="step-icon">♾️</div>
+      <div class="step-title">Read Anywhere</div>
+      <p class="step-desc">Access your library from any device — phone, tablet, or desktop. Your downloads never expire.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="price-section" id="pricing">
+  <div class="sec-hd">
+    <div class="sec-label">Membership Plans</div>
+    <h2 class="sec-title">Choose Your Plan <span>మీ ప్రణాళికను ఎంచుకోండి</span></h2>
+    <div class="orn"><span class="orn-line"></span><span class="orn-dia"></span><span class="orn-line"></span></div>
+  </div>
+  <div class="price-grid">
+    <div class="price-card">
+      <div class="plan-name">Shishya — శిష్య</div>
+      <div class="plan-desc">Seeker's Free Access</div>
+      <div class="plan-price"><span class="plan-amount">₹0</span> <span class="plan-period">/ forever</span></div>
+      <ul class="plan-feats">
+        <li><span class="ck">✓</span> Browse full catalog</li>
+        <li><span class="ck">✓</span> Read first 20 pages free</li>
+        <li><span class="ck">✓</span> Wishlist &amp; bookmarks</li>
+        <li><span class="cx">✗</span> Full book access</li>
+        <li><span class="cx">✗</span> PDF downloads</li>
+      </ul>
+      <button class="btn-plan" onclick="openModal('signup')">Start Free</button>
+    </div>
+    <div class="price-card featured">
+      <div class="feat-badge">Most Popular</div>
+      <div class="plan-name">Sadhaka — సాధక</div>
+      <div class="plan-desc">The Practitioner's Plan</div>
+      <div class="plan-price"><span class="plan-amount">₹199</span> <span class="plan-period">/ month</span></div>
+      <ul class="plan-feats">
+        <li><span class="ck">✓</span> Unlimited online reading</li>
+        <li><span class="ck">✓</span> 5 PDF downloads / month</li>
+        <li><span class="ck">✓</span> New releases early access</li>
+        <li><span class="ck">✓</span> Reading history &amp; notes</li>
+        <li><span class="ck">✓</span> Cancel anytime</li>
+      </ul>
+      <button class="btn-plan" onclick="openModal('signup')">Start 7-Day Free Trial</button>
+    </div>
+    <div class="price-card">
+      <div class="plan-name">Guru — గురు</div>
+      <div class="plan-desc">Unlimited Everything</div>
+      <div class="plan-price"><span class="plan-amount">₹499</span> <span class="plan-period">/ month</span></div>
+      <ul class="plan-feats">
+        <li><span class="ck">✓</span> Everything in Sadhaka</li>
+        <li><span class="ck">✓</span> Unlimited PDF downloads</li>
+        <li><span class="ck">✓</span> Offline reading mode</li>
+        <li><span class="ck">✓</span> Priority support</li>
+        <li><span class="ck">✓</span> Family sharing (up to 4)</li>
+      </ul>
+      <button class="btn-plan dark" onclick="openModal('signup')">Get Guru Access</button>
+    </div>
+  </div>
+  <p class="price-note">Individual PDFs available without subscription starting at ₹30 per book.</p>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-section">
+  <div class="sec-hd">
+    <div class="sec-label">Reader Stories</div>
+    <h2 class="sec-title">What Readers Say <span>పాఠకుల మాటలు</span></h2>
+    <div class="orn"><span class="orn-line"></span><span class="orn-dia"></span><span class="orn-line"></span></div>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"గాయత్రీ ప్రచురణాలు వల్ల మా పూర్వీకుల గ్రంథాలు మళ్ళీ చదవగలిగాను. చాలా సంతోషంగా ఉంది!"</p>
+      <div class="testi-author">
+        <div class="auth-av" style="background:var(--saffron-dark)">LR</div>
+        <div><div class="auth-name">Lakshmi Raghavendra</div><div class="auth-loc">Hyderabad, Telangana</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"The PDF quality is excellent and prices are very reasonable. I've downloaded over 30 books for my family's puja library."</p>
+      <div class="testi-author">
+        <div class="auth-av" style="background:var(--crimson)">SK</div>
+        <div><div class="auth-name">Srinivas Kotha</div><div class="auth-loc">Vijayawada, AP</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"As a Telugu diaspora member in the US, this is a lifeline to our culture. The Guru plan is worth every rupee."</p>
+      <div class="testi-author">
+        <div class="auth-av" style="background:var(--mid-brown)">PP</div>
+        <div><div class="auth-name">Padma Prasad</div><div class="auth-loc">New Jersey, USA</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="nl-section">
+  <div class="nl-inner">
+    <div class="nl-text">
+      <h3>Stay Connected with the Sacred</h3>
+      <p>New arrivals, free books, and cultural events — in Telugu &amp; English.</p>
+    </div>
+    <div class="nl-form">
+      <input class="nl-input" type="email" id="nlEmail" placeholder="your@email.com">
+      <button class="btn-primary" onclick="subscribeNL()">Subscribe</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="foot-brand">Gayatri Prachuranalu</div>
+      <div class="foot-brand-te">గాయత్రీ ప్రచురణాలు</div>
+      <p class="foot-desc">Preserving and sharing the rich literary and spiritual heritage of Telugu language and culture — accessible to readers worldwide.</p>
+    </div>
+    <div>
+      <div class="foot-col-title">Library</div>
+      <ul class="foot-links">
+        <li><a href="#books">Browse All Books</a></li>
+        <li><a href="#categories">Categories</a></li>
+        <li><a href="#pricing">Membership Plans</a></li>
+        <li><a href="#">New Arrivals</a></li>
+        <li><a href="#">Free Books</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-col-title">Account</div>
+      <ul class="foot-links">
+        <li><a onclick="openModal('signup')">Create Account</a></li>
+        <li><a onclick="openModal('login')">Sign In</a></li>
+        <li><a href="#">My Library</a></li>
+        <li><a href="#">Downloads</a></li>
+        <li><a href="#">Reading History</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-col-title">Support</div>
+      <ul class="foot-links">
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+        <li><a href="#">Refund Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2025 Gayatri Prachuranalu. All rights reserved.</span>
+    <span>Made with ❤️ for Telugu readers worldwide · <a href="mailto:info@gayatriprachuranalu.com">info@gayatriprachuranalu.com</a></span>
+  </div>
+</footer>
+
+<!-- AUTH MODAL -->
+<div class="modal-overlay" id="authModal" onclick="bgClose(event,'authModal')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-logo">
+      <div class="modal-logo-circle">గా</div>
+      <div class="modal-title">Gayatri Prachuranalu</div>
+      <div class="modal-sub">గాయత్రీ ప్రచురణాలు</div>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn active" id="loginTab" onclick="switchTab('login')">Sign In</button>
+      <button class="tab-btn" id="signupTab" onclick="switchTab('signup')">Create Account</button>
+    </div>
+    <div id="loginForm">
+      <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" placeholder="your@email.com"></div>
+      <div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" placeholder="••••••••"></div>
+      <button class="form-submit" onclick="showNotif('Welcome back! You are now signed in. 🙏')">Sign In to Library</button>
+      <div class="div-or">or continue with</div>
+      <button class="social-btn" onclick="showNotif('Google sign-in coming soon!')">
+        <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        Sign in with Google
+      </button>
+      <p class="form-alt"><a onclick="switchTab('signup')">Don't have an account? Join free →</a></p>
+    </div>
+    <div id="signupForm" style="display:none">
+      <div class="form-group"><label class="form-label">Full Name</label><input type="text" class="form-input" placeholder="మీ పేరు / Your Name"></div>
+      <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" placeholder="your@email.com"></div>
+      <div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" placeholder="Create a strong password"></div>
+      <div class="form-group"><label class="form-label">Preferred Language</label>
+        <select class="form-input"><option>తెలుగు (Telugu)</option><option>English</option><option>Both</option></select>
+      </div>
+      <button class="form-submit" onclick="showNotif('Account created! Welcome to Gayatri Prachuranalu. 🙏')">Create Free Account</button>
+      <p class="form-alt" style="font-size:.72rem;margin-top:.75rem">By creating an account you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
+      <p class="form-alt"><a onclick="switchTab('login')">Already have an account? Sign in →</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- DOWNLOAD MODAL -->
+<div class="modal-overlay" id="dlModal" onclick="bgClose(event,'dlModal')">
+  <div class="modal dl-modal">
+    <button class="modal-close" onclick="closeDL()">✕</button>
+    <div class="modal-logo"><div class="modal-logo-circle" style="font-size:1.5rem">📄</div></div>
+    <div class="dl-book-title" id="dlTitle">Book Title</div>
+    <p class="dl-author" id="dlAuthor"></p>
+    <div class="dl-price-box"><span class="dl-price" id="dlPrice">₹49</span><span class="dl-price-note">One-time payment · PDF yours to keep forever</span></div>
+    <p class="pay-label">Select Payment Method</p>
+    <div class="pay-grid">
+      <div class="pay-method selected" onclick="selPay(this)"><span class="pay-icon">📱</span>UPI / GPay</div>
+      <div class="pay-method" onclick="selPay(this)"><span class="pay-icon">💳</span>Card</div>
+      <div class="pay-method" onclick="selPay(this)"><span class="pay-icon">🏦</span>Net Banking</div>
+      <div class="pay-method" onclick="selPay(this)"><span class="pay-icon">💰</span>Wallet</div>
+    </div>
+    <button class="form-submit" onclick="showNotif('Payment processing… PDF download starting shortly. 📥'); closeDL();">Pay &amp; Download PDF</button>
+    <p class="secure-note">🔒 Secure payment · Instant download · No subscription required</p>
+  </div>
+</div>
+
+<div class="notif" id="notif"></div>
+
+<script>
+const books = [
+  {title:"గాయత్రీ మహత్మ్యం",author:"వేదవ్యాస",en:"Gayatri Mahatmyam",price:"₹49",color:"#7C2D12",icon:"🙏",free:false},
+  {title:"భాగవతం",author:"పోతన",en:"Potana Bhagavatam",price:"₹89",color:"#78350F",icon:"📿",free:false},
+  {title:"వేంకటేశ్వర సుప్రభాతం",author:"అజ్ఞాతం",en:"Venkateswara Suprabhatam",price:"Free",color:"#1A4731",icon:"✨",free:true},
+  {title:"లలితా సహస్రనామం",author:"అగస్త్య మహర్షి",en:"Lalita Sahasranamam",price:"₹39",color:"#5B21B6",icon:"🌸",free:false},
+  {title:"రామాయణం",author:"వాల్మీకి",en:"Valmiki Ramayanam",price:"₹99",color:"#991B1B",icon:"🏹",free:false},
+  {title:"ఆంధ్రమహాభారతం",author:"నన్నయ భట్టు",en:"Andhra Mahabharatam",price:"₹120",color:"#1E3A5F",icon:"⚔️",free:false},
+  {title:"హనుమాన్ చాలీసా",author:"తులసీదాస్",en:"Hanuman Chalisa Telugu",price:"Free",color:"#166534",icon:"🐒",free:true},
+  {title:"శివపురాణం",author:"వేదవ్యాస",en:"Shiva Purana",price:"₹79",color:"#374151",icon:"🔱",free:false},
+];
+
+const grid = document.getElementById('booksGrid');
+books.forEach(b => {
+  const c = document.createElement('div');
+  c.className = 'book-card';
+  c.innerHTML = `
+    <div class="book-cover" style="background:${b.color}">
+      <div class="bk-icon">${b.icon}</div>
+      <div class="bk-title">${b.title}</div>
+      <div class="bk-en">${b.en}</div>
+    </div>
+    <div class="book-info">
+      <div class="bk-author">${b.author}</div>
+      <div class="bk-price-row">
+        <span class="bk-price">${b.free?'':b.price}</span>
+        ${b.free?'<span class="badge-free">Free</span>':'<span class="badge-pdf">PDF</span>'}
+      </div>
+      <button class="btn-read" onclick="${b.free?`showNotif('Downloading free PDF… 📥')`:`openDL('${b.title}','${b.author}','${b.price}')`}">${b.free?'Download Free':'Read / Download'}</button>
+    </div>`;
+  grid.appendChild(c);
+});
+
+// scroll cards in
+const ro = new IntersectionObserver(entries => {
+  entries.forEach((e,i) => {
+    if(e.isIntersecting){
+      e.target.style.transitionDelay = (i*0.05)+'s';
+      e.target.style.opacity='1';
+      e.target.style.transform='translateY(0)';
+    }
+  });
+},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.book-card,.cat-card,.step-card,.price-card,.testi-card').forEach(el=>{
+  el.style.opacity='0'; el.style.transform='translateY(22px)'; el.style.transition='opacity .5s ease,transform .5s ease';
+  ro.observe(el);
+});
+
+// Nav scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('mainNav').style.boxShadow = window.scrollY>30?'0 4px 20px rgba(0,0,0,.5)':'';
+});
+
+function toggleMenu(){ document.getElementById('mobMenu').classList.toggle('open'); }
+
+function openModal(tab){
+  document.getElementById('authModal').classList.add('active');
+  document.body.style.overflow='hidden';
+  switchTab(tab||'login');
+}
+function closeModal(){
+  document.getElementById('authModal').classList.remove('active');
+  document.body.style.overflow='';
+}
+function switchTab(t){
+  document.getElementById('loginTab').classList.toggle('active',t==='login');
+  document.getElementById('signupTab').classList.toggle('active',t==='signup');
+  document.getElementById('loginForm').style.display=t==='login'?'':'none';
+  document.getElementById('signupForm').style.display=t==='signup'?'':'none';
+}
+function openDL(title,author,price){
+  document.getElementById('dlTitle').textContent=title;
+  document.getElementById('dlAuthor').textContent='by '+author;
+  document.getElementById('dlPrice').textContent=price;
+  document.getElementById('dlModal').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function closeDL(){
+  document.getElementById('dlModal').classList.remove('active');
+  document.body.style.overflow='';
+}
+function bgClose(e,id){ if(e.target===document.getElementById(id)){ id==='authModal'?closeModal():closeDL(); } }
+function selPay(el){ document.querySelectorAll('.pay-method').forEach(m=>m.classList.remove('selected')); el.classList.add('selected'); }
+
+let nt;
+function showNotif(msg){
+  const n=document.getElementById('notif');
+  n.textContent=msg; n.style.display='block';
+  clearTimeout(nt); nt=setTimeout(()=>n.style.display='none',3500);
+}
+function subscribeNL(){
+  const e=document.getElementById('nlEmail');
+  if(e&&e.value&&e.value.includes('@')){ showNotif('Subscribed! 🙏 Updates in Telugu & English.'); e.value=''; }
+  else showNotif('Please enter a valid email address.');
+}
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){closeModal();closeDL();} });
+</script>
+</body>
+</html>
