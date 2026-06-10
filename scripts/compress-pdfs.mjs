@@ -7,8 +7,8 @@
 // OUTPUT: assets/books-optimized/<id>.pdf
 //
 // These are heavy scans, so we convert to grayscale (the text is black ink) and downsample.
-// Default 100 dpi keeps Telugu text readable while landing each book well under Supabase's 50 MB
-// free-tier limit. Override with PDF_DPI, e.g. `PDF_DPI=120 node compress-pdfs.mjs` for sharper.
+// Default 85 dpi keeps Telugu text readable while keeping files small/fast (and under Supabase's
+// 50 MB free-tier limit). Override with PDF_DPI, e.g. `PDF_DPI=100 node compress-pdfs.mjs` for sharper.
 
 import { existsSync, mkdirSync, statSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
@@ -19,7 +19,7 @@ import { BOOKS, slugify } from './books.mjs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const OUT_DIR = path.join(ROOT, 'assets', 'books-optimized');
-const DPI = process.env.PDF_DPI || '100';
+const DPI = process.env.PDF_DPI || '85';
 
 function findGhostscript() {
   const candidates = [process.env.GS_BIN, 'gswin64c', 'gswin32c', 'gs'].filter(Boolean);

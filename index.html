@@ -419,7 +419,7 @@
       <span class="dot">·</span>
       📖 Free Online Reading
       <span class="dot">·</span>
-      💳 ₹99 per Book or Subscribe
+      💳 ₹99 per Book Download
     </div>
   </div>
 </section>
@@ -513,7 +513,7 @@
       <div class="step-num">03</div>
       <div class="step-icon">📄</div>
       <div class="step-title">Download PDF</div>
-      <p class="step-desc">Download any book's PDF for ₹99 — or subscribe for downloads included. Online reading stays free for everyone.</p>
+      <p class="step-desc">Download any book's PDF for ₹99 to keep on your device. Online reading stays free for everyone.</p>
     </div>
     <div class="step-card">
       <div class="step-num">04</div>
@@ -522,55 +522,6 @@
       <p class="step-desc">Access your library from any device — phone, tablet, or desktop. Your downloads never expire.</p>
     </div>
   </div>
-</section>
-
-<!-- PRICING -->
-<section class="price-section" id="pricing">
-  <div class="sec-hd">
-    <div class="sec-label">Membership Plans</div>
-    <h2 class="sec-title">Choose Your Plan <span>మీ ప్రణాళికను ఎంచుకోండి</span></h2>
-    <div class="orn"><span class="orn-line"></span><span class="orn-dia"></span><span class="orn-line"></span></div>
-  </div>
-  <div class="price-grid">
-    <div class="price-card">
-      <div class="plan-name">Shishya — శిష్య</div>
-      <div class="plan-desc">Free online reading</div>
-      <div class="plan-price"><span class="plan-amount">₹0</span> <span class="plan-period">/ forever</span></div>
-      <ul class="plan-feats">
-        <li><span class="ck">✓</span> Browse full catalog</li>
-        <li><span class="ck">✓</span> Read every book online free</li>
-        <li><span class="ck">✓</span> Wishlist &amp; bookmarks</li>
-        <li><span class="ck">✓</span> Download any book for ₹99</li>
-      </ul>
-      <button class="btn-plan" onclick="openModal('signup')">Start Free</button>
-    </div>
-    <div class="price-card featured">
-      <div class="feat-badge">Most Popular</div>
-      <div class="plan-name">Sadhaka — సాధక</div>
-      <div class="plan-desc">The Practitioner's Plan</div>
-      <div class="plan-price"><span class="plan-amount">₹199</span> <span class="plan-period">/ month</span></div>
-      <ul class="plan-feats">
-        <li><span class="ck">✓</span> Everything in Shishya</li>
-        <li><span class="ck">✓</span> 5 PDF downloads / month included</li>
-        <li><span class="ck">✓</span> Reading history &amp; notes</li>
-        <li><span class="ck">✓</span> New arrivals first</li>
-      </ul>
-      <button class="btn-plan" onclick="planComingSoon()">Choose Sadhaka</button>
-    </div>
-    <div class="price-card">
-      <div class="plan-name">Guru — గురు</div>
-      <div class="plan-desc">Unlimited Everything</div>
-      <div class="plan-price"><span class="plan-amount">₹499</span> <span class="plan-period">/ month</span></div>
-      <ul class="plan-feats">
-        <li><span class="ck">✓</span> Everything in Sadhaka</li>
-        <li><span class="ck">✓</span> Unlimited PDF downloads</li>
-        <li><span class="ck">✓</span> Early access to new releases</li>
-        <li><span class="ck">✓</span> Priority support</li>
-      </ul>
-      <button class="btn-plan dark" onclick="planComingSoon()">Choose Guru</button>
-    </div>
-  </div>
-  <p class="price-note">All signed-in members read online for free. Download any book for ₹99 — or subscribe for downloads included.</p>
 </section>
 
 <!-- TESTIMONIALS -->
@@ -635,7 +586,7 @@
       <ul class="foot-links">
         <li><a href="#books">Browse All Books</a></li>
         <li><a href="#categories">Categories</a></li>
-        <li><a href="#pricing">PDF Pricing</a></li>
+        <li><a href="#" onclick="showNotif('PDF downloads are ₹99 each — coming soon.'); return false;">PDF Pricing</a></li>
         <li><a href="#books" onclick="showNotif('Showing the latest uploaded books.')">New Arrivals</a></li>
         <li><a href="#books" onclick="showNotif('All books are free to read online.')">Free Books</a></li>
       </ul>
@@ -1339,11 +1290,11 @@ const infoPages = {
       <h4>Can I read books online for free?</h4>
       <p>Yes. Every uploaded book can be read online for free after you create an account and sign in.</p>
       <h4>How much is a PDF download?</h4>
-      <p>You can download any single book's PDF for ₹99. If you download often, the Sadhaka (₹199/month) and Guru (₹499/month) plans include downloads and work out cheaper.</p>
+      <p>You can download any single book's PDF for ₹99, to keep on your device. (Payments are being set up — downloads will open soon.)</p>
       <h4>Can I pay today?</h4>
       <p>Payment setup is being connected. Until then, every book is free to read online after sign-in, and your download requests are saved so we can notify you when checkout is live.</p>
-      <h4>Do I need a monthly subscription?</h4>
-      <p>No. You can read online free and pay ₹99 per book only when you want to download one. Subscriptions are optional for readers who download a lot.</p>
+      <h4>Do I need a subscription?</h4>
+      <p>No. Online reading is free after sign-in. You only pay ₹99 per book when you want to download its PDF.</p>
       <h4>Why do some books show a designed cover instead of the original cover?</h4>
       <p>Some uploaded PDFs do not yet have a matching cover image. Those books use a fallback design until the correct cover is added.</p>
       <h4>Can I access books on mobile?</h4>
@@ -1399,7 +1350,7 @@ const infoPages = {
       <h4>Intellectual Property</h4>
       <p>Books, cover images, website design, text, and other materials are provided for permitted reading and purchase use only. You may not scrape, reproduce, resell, upload, or redistribute the content without permission.</p>
       <h4>Pricing</h4>
-      <p>Online reading is free for signed-in members. You can download a single book's PDF for ₹99, or subscribe to a monthly plan (currently Sadhaka ₹199/month and Guru ₹499/month) that includes downloads. Subscriptions renew automatically each month until cancelled.</p>
+      <p>Online reading is free for signed-in members. You can download a single book's PDF for ₹99. Prices may change as the service grows.</p>
       <h4>Service Availability</h4>
       <p>We aim to keep the library available, but access may occasionally be interrupted for maintenance, hosting, network, payment provider, or storage issues.</p>
       <h4>Changes</h4>
@@ -1446,9 +1397,9 @@ const infoPagesTe = {
     html: `
       <h4>ఖాతా ఉచితమా?</h4><p>అవును. ఖాతా సృష్టించడం ఉచితం.</p>
       <h4>పుస్తకాలు ఆన్‌లైన్‌లో ఉచితంగా చదవవచ్చా?</h4><p>అవును. ఖాతా సృష్టించి సైన్ ఇన్ చేసిన తర్వాత ప్రతి పుస్తకాన్ని ఆన్‌లైన్‌లో ఉచితంగా చదవవచ్చు.</p>
-      <h4>PDF డౌన్లోడ్ ధర ఎంత?</h4><p>ఏ ఒక్క పుస్తకం PDFనైనా ₹99కు డౌన్‌లోడ్ చేసుకోవచ్చు. ఎక్కువగా డౌన్‌లోడ్ చేసేవారికి సాధక (నెలకు ₹199), గురు (నెలకు ₹499) ప్లాన్‌లలో డౌన్‌లోడ్‌లు కలిసి ఉంటాయి, చౌకగా పడతాయి.</p>
+      <h4>PDF డౌన్లోడ్ ధర ఎంత?</h4><p>ఏ ఒక్క పుస్తకం PDFనైనా ₹99కు డౌన్‌లోడ్ చేసుకోవచ్చు. (పేమెంట్ సెటప్ అవుతోంది — త్వరలో డౌన్‌లోడ్‌లు అందుబాటులోకి వస్తాయి.)</p>
       <h4>ఇప్పుడే చెల్లించవచ్చా?</h4><p>పేమెంట్ సెటప్ కనెక్ట్ అవుతోంది. అప్పటివరకు ప్రతి పుస్తకం సైన్ ఇన్ తర్వాత ఆన్‌లైన్‌లో ఉచితంగా చదవవచ్చు; చెక్‌అవుట్ ప్రారంభమైనప్పుడు తెలియజేయడానికి మీ డౌన్‌లోడ్ అభ్యర్థనలు సేవ్ అవుతాయి.</p>
-      <h4>నెలవారీ సభ్యత్వం అవసరమా?</h4><p>అవసరం లేదు. ఆన్‌లైన్‌లో ఉచితంగా చదవవచ్చు; ఒక పుస్తకం డౌన్‌లోడ్ కావాలంటే మాత్రమే ₹99 చెల్లించండి. ఎక్కువ డౌన్‌లోడ్ చేసేవారికి సభ్యత్వం ఐచ్ఛికం.</p>
+      <h4>సభ్యత్వం అవసరమా?</h4><p>అవసరం లేదు. సైన్ ఇన్ తర్వాత ఆన్‌లైన్ చదవడం ఉచితం. ఒక పుస్తకం PDF డౌన్‌లోడ్ కావాలంటే మాత్రమే ₹99 చెల్లించండి.</p>
     `
   },
   privacy: {
@@ -1473,7 +1424,7 @@ const infoPagesTe = {
       <h4>PDF డౌన్లోడ్‌లు</h4><p>చెల్లించి డౌన్లోడ్ చేసిన PDFలు వ్యక్తిగత వినియోగం కోసం మాత్రమే. వాటిని పబ్లిక్‌గా పంచరాదు.</p>
       <h4>ఖాతా భద్రత</h4><p>మీ లాగిన్ యాక్సెస్‌ను భద్రంగా ఉంచడం మీ బాధ్యత.</p>
       <h4>మేధో సంపత్తి</h4><p>పుస్తకాలు, కవర్ చిత్రాలు, వెబ్‌సైట్ డిజైన్ మరియు ఇతర కంటెంట్ అనుమతించిన వినియోగం కోసం మాత్రమే. అనుమతి లేకుండా పంచడం, అమ్మడం, కాపీ చేయడం నిషేధం.</p>
-      <h4>ధర</h4><p>సైన్ ఇన్ చేసిన సభ్యులకు ఆన్‌లైన్ చదవడం ఉచితం. ఏ ఒక్క పుస్తకం PDFనైనా ₹99కు డౌన్‌లోడ్ చేసుకోవచ్చు, లేదా డౌన్‌లోడ్‌లు కలిసి ఉండే నెలవారీ ప్లాన్‌కు (ప్రస్తుతం సాధక నెలకు ₹199, గురు నెలకు ₹499) సభ్యత్వం తీసుకోవచ్చు. సభ్యత్వాలు రద్దు చేసే వరకు ప్రతి నెలా ఆటోమేటిక్‌గా రెన్యూ అవుతాయి.</p>
+      <h4>ధర</h4><p>సైన్ ఇన్ చేసిన సభ్యులకు ఆన్‌లైన్ చదవడం ఉచితం. ఏ ఒక్క పుస్తకం PDFనైనా ₹99కు డౌన్‌లోడ్ చేసుకోవచ్చు. సేవ పెరుగుతున్న కొద్దీ ధరలు మారవచ్చు.</p>
     `
   },
   refund: {
@@ -1558,7 +1509,7 @@ const siteCopy = {
     heroTagline:'A sacred library of Telugu spiritual literature, devotional texts, and classical works — free to read online after sign-in.',
     browseLibrary:'📚 Browse the Library',
     createAccount:'Create Free Account',
-    heroTrust:'🔒 Secure & Trusted <span class="dot">·</span> 📖 Free Online Reading <span class="dot">·</span> 💳 ₹99 per Book or Subscribe',
+    heroTrust:'🔒 Secure & Trusted <span class="dot">·</span> 📖 Free Online Reading <span class="dot">·</span> 💳 ₹99 per Book Download',
     booksAvailable:'Books Available',
     accountSignup:'Account Signup',
     statCategories:'Categories',
@@ -1581,7 +1532,7 @@ const siteCopy = {
     step2Title:'Browse the Library',
     step2Desc:'Explore Telugu books across spiritual, devotional, literary, and classical categories. Open any title and read online free.',
     step3Title:'Download PDF',
-    step3Desc:"Download any book's PDF for ₹99, or subscribe for downloads included. Online reading stays free for everyone.",
+    step3Desc:"Download any book's PDF for ₹99 to keep on your device. Online reading stays free for everyone.",
     step4Title:'Read Anywhere',
     step4Desc:'Access your library from any device — phone, tablet, or desktop. Your downloads never expire.',
     membership:'Membership Plans',
@@ -1629,7 +1580,7 @@ const siteCopy = {
     heroTagline:'తెలుగు ఆధ్యాత్మిక సాహిత్యం, భక్తి గ్రంథాలు, శాస్త్రీయ రచనల పవిత్ర గ్రంథాలయం — సైన్ ఇన్ తర్వాత ఉచిత ఆన్‌లైన్ చదవడం.',
     browseLibrary:'📚 లైబ్రరీ చూడండి',
     createAccount:'ఉచిత ఖాతా సృష్టించండి',
-    heroTrust:'🔒 సురక్షితం <span class="dot">·</span> 📖 ఉచిత ఆన్‌లైన్ చదవడం <span class="dot">·</span> 💳 ఒక్కో పుస్తకం ₹99 లేదా సభ్యత్వం',
+    heroTrust:'🔒 సురక్షితం <span class="dot">·</span> 📖 ఉచిత ఆన్‌లైన్ చదవడం <span class="dot">·</span> 💳 ఒక్కో పుస్తకం PDF ₹99',
     booksAvailable:'పుస్తకాలు',
     accountSignup:'ఉచిత ఖాతా',
     statCategories:'విభాగాలు',
@@ -1652,7 +1603,7 @@ const siteCopy = {
     step2Title:'లైబ్రరీ చూడండి',
     step2Desc:'ఆధ్యాత్మిక, భక్తి, సాహిత్య, శాస్త్రీయ విభాగాల్లో తెలుగు పుస్తకాలను చూడండి.',
     step3Title:'PDF డౌన్‌లోడ్',
-    step3Desc:'ఏ పుస్తకమైనా ₹99కు PDF డౌన్‌లోడ్ చేసుకోండి, లేదా సభ్యత్వంతో డౌన్‌లోడ్‌లు పొందండి. ఆన్‌లైన్ చదవడం అందరికీ ఉచితం.',
+    step3Desc:'ఏ పుస్తకమైనా ₹99కు PDF డౌన్‌లోడ్ చేసి ఉంచుకోండి. ఆన్‌లైన్ చదవడం అందరికీ ఉచితం.',
     step4Title:'ఎక్కడైనా చదవండి',
     step4Desc:'ఫోన్, టాబ్లెట్, డెస్క్‌టాప్‌లో మీ లైబ్రరీని ఉపయోగించండి.',
     membership:'సభ్యత్వ ప్రణాళికలు',
