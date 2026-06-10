@@ -184,6 +184,7 @@
   .bk-en { font-size:.62rem; font-style:italic; color:rgba(255,255,255,.72); margin-top:7px; text-align:center; position:relative; z-index:1; }
   .book-info { padding:.875rem 1rem; border-top:1px solid var(--border); }
   .bk-author { font-size:.68rem; color:var(--text-muted); letter-spacing:.05em; text-transform:uppercase; }
+  .bk-name { font-family:'Noto Sans Telugu','Noto Sans',sans-serif; font-size:.92rem; font-weight:600; color:var(--deep-brown); line-height:1.35; min-height:2.4em; }
   .bk-price-row { display:flex; align-items:center; justify-content:space-between; margin-top:.5rem; }
 .bk-price { font-family:'Cinzel',Georgia,serif; font-size:.9rem; color:var(--saffron-dark); font-weight:600; }
 .badge-free { background:#DCFCE7; color:#166534; font-size:.62rem; padding:2px 8px; border-radius:99px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; }
@@ -319,7 +320,12 @@
 .reader-head { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:.75rem; padding-right:2rem; }
 .reader-title { font-family:'Cinzel',Georgia,serif; font-size:1rem; color:var(--deep-brown); font-weight:700; }
 .reader-note { font-size:.74rem; color:var(--text-muted); }
-.reader-frame { flex:1; width:100%; border:1px solid var(--border); border-radius:6px; background:#fff; }
+.reader-body { flex:1; position:relative; min-height:0; }
+.reader-frame { width:100%; height:100%; border:1px solid var(--border); border-radius:6px; background:#fff; }
+.reader-loading { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.75rem; background:var(--ivory); border:1px solid var(--border); border-radius:6px; color:var(--text-muted); font-size:.85rem; text-align:center; padding:1rem; z-index:2; }
+.reader-loading.hidden { display:none; }
+.reader-spinner { width:34px; height:34px; border:3px solid var(--border); border-top-color:var(--saffron); border-radius:50%; animation:spin .8s linear infinite; }
+@keyframes spin { to { transform:rotate(360deg); } }
   /* download modal */
   .dl-modal { max-width:380px; }
   .dl-book-title { font-family:'Noto Sans Telugu','Noto Sans',sans-serif; font-size:1.1rem; color:var(--deep-brown); text-align:center; margin-bottom:4px; font-weight:600; }
@@ -680,7 +686,10 @@
         <div class="reader-note">Online reading is free after sign-in. PDF downloads coming soon.</div>
       </div>
     </div>
-    <iframe class="reader-frame" id="readerFrame" title="Book reader"></iframe>
+    <div class="reader-body">
+      <div class="reader-loading" id="readerLoading"><div class="reader-spinner"></div><div>Loading book… large files may take a few seconds</div></div>
+      <iframe class="reader-frame" id="readerFrame" title="Book reader"></iframe>
+    </div>
   </div>
 </div>
 
@@ -959,6 +968,7 @@ const featuredBooks = [...books].sort((a,b) => Number(Boolean(b.coverUrl)) - Num
 function renderBooks(){
   grid.innerHTML = '';
   const copy = getSiteCopy();
+  const signedIn = !!(auth && auth.currentUser);
   const pool = activeCategory ? featuredBooks.filter(b => b.category === activeCategory) : featuredBooks;
   const visibleBooks = (showingAllBooks || activeCategory) ? pool : pool.slice(0, FEATURED_BOOK_COUNT);
   visibleBooks.forEach(b => {
@@ -966,15 +976,14 @@ function renderBooks(){
     c.className = 'book-card';
     c.innerHTML = `
       <div class="book-cover" style="background:${b.color}">
-        ${b.coverUrl ? `<img src="${b.coverUrl}" alt="${b.en} cover" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:0">` : ''}
-        <div class="bk-icon">${b.icon}</div>
-        <div class="bk-title">${b.title}</div>
-        <div class="bk-en">${b.en}</div>
+        ${b.coverUrl
+          ? `<img src="${b.coverUrl}" alt="${b.en} cover" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:0">`
+          : `<div class="bk-icon">${b.icon}</div><div class="bk-title">${b.title}</div><div class="bk-en">${b.en}</div>`}
       </div>
       <div class="book-info">
-        <div class="bk-author">${b.author}</div>
+        <div class="bk-name">${b.title}</div>
         <div class="bk-price-row">
-          <span class="bk-price">${copy.bookReadFree}</span>
+          <span class="bk-price">${signedIn ? copy.bookReadFreeIn : copy.bookReadFree}</span>
           <span class="badge-pdf">${copy.bookPdfBadge}</span>
         </div>
         <div class="book-actions">
@@ -1170,11 +1179,19 @@ async function resolveBookUrl(book){
 function openReader(book, url){
   const src = url || book.readUrl || '';
   document.getElementById('readerTitle').textContent = book.en || book.title;
-  document.getElementById('readerFrame').src = `${src}#toolbar=0&navpanes=0&scrollbar=1`;
+  const frame = document.getElementById('readerFrame');
+  const loading = document.getElementById('readerLoading');
+  const hide = () => { if(loading) loading.classList.add('hidden'); };
+  if(loading) loading.classList.remove('hidden');
+  frame.onload = hide;
+  clearTimeout(window._readerTimer);
+  window._readerTimer = setTimeout(hide, 12000); // fallback so the spinner never sticks
+  frame.src = `${src}#toolbar=0&navpanes=0&scrollbar=1`;
   document.getElementById('readerModal').classList.add('active');
   document.body.style.overflow='hidden';
 }
 function closeReader(){
+  clearTimeout(window._readerTimer);
   document.getElementById('readerModal').classList.remove('active');
   document.getElementById('readerFrame').src = '';
   document.body.style.overflow='';
@@ -1595,6 +1612,7 @@ const siteCopy = {
     terms:'Terms of Use',
     refund:'Refund Policy',
     bookReadFree:'Free with login',
+    bookReadFreeIn:'Free to read',
     bookPdfBadge:'PDF ₹99',
     readOnline:'Read Online',
     downloadPdf:'Download PDF ₹99',
@@ -1665,6 +1683,7 @@ const siteCopy = {
     terms:'వినియోగ నిబంధనలు',
     refund:'రిఫండ్ విధానం',
     bookReadFree:'లాగిన్‌తో ఉచితం',
+    bookReadFreeIn:'ఉచితంగా చదవండి',
     bookPdfBadge:'PDF ₹99',
     readOnline:'ఆన్‌లైన్ చదవండి',
     downloadPdf:'PDF డౌన్‌లోడ్ ₹99',
@@ -1848,7 +1867,7 @@ function initAuth(){
     socialButton.addEventListener('click', handleGoogleSignIn);
   }
   if(auth){
-    onAuthStateChanged(auth, user => updateAuthNav(user));
+    onAuthStateChanged(auth, user => { updateAuthNav(user); renderBooks(); });
   } else {
     updateAuthNav(null);
   }
