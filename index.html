@@ -677,7 +677,7 @@
     <div class="reader-head">
       <div>
         <div class="reader-title" id="readerTitle">Book Reader</div>
-        <div class="reader-note">Online reading is available after sign-in. PDF download requires payment.</div>
+        <div class="reader-note">Online reading is free after sign-in. PDF downloads coming soon.</div>
       </div>
     </div>
     <iframe class="reader-frame" id="readerFrame" title="Book reader"></iframe>
@@ -1292,7 +1292,7 @@ const googleProvider = auth ? new GoogleAuthProvider() : null;
 // Phase 2: flip to true after uploading PDFs to Supabase and setting the Vercel env vars.
 // false = read PDFs from the public assets/ path (current).
 // true  = fetch a short-lived signed URL from the /api/book-url function (gated by Firebase sign-in).
-const USE_REMOTE_BOOKS = false;
+const USE_REMOTE_BOOKS = true;
 const BOOK_URL_ENDPOINT = '/api/book-url';
 const LANGUAGE_KEY = 'gp_language';
 const PAYMENT_GATEWAY = 'pending';
