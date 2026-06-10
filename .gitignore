@@ -1,0 +1,24 @@
+# Book PDFs are paid content — they belong in Firebase Storage (behind auth),
+# never committed to the repo or served publicly. See PRODUCTION_NOTES.md / Phase 2.
+assets/Books_to_upload/
+assets/books-optimized/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+
+# Local env / secrets (used once payments + backend land in Phase 5)
+.env
+.env.*
+!.env.example
+
+# Firebase service-account key (Phase 2 upload script) — NEVER commit this
+scripts/service-account.json
+service-account*.json
+*-service-account.json
+
+# Dependencies / build output (future backend)
+node_modules/
+.vercel/

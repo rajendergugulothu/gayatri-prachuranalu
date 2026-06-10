@@ -1,0 +1,15 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /covers/{allPaths=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /books/{bookId}/{allPaths=**} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
+  }
+}

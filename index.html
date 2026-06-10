@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gayatri Prachuranalu — గాయత్రీ ప్రచురణాలు</title>
+<title>Gayatri Prachuranalu — గాయత్రి ప్రచురణలు</title>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;700&family=Noto+Sans+Telugu:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -185,11 +185,15 @@
   .book-info { padding:.875rem 1rem; border-top:1px solid var(--border); }
   .bk-author { font-size:.68rem; color:var(--text-muted); letter-spacing:.05em; text-transform:uppercase; }
   .bk-price-row { display:flex; align-items:center; justify-content:space-between; margin-top:.5rem; }
-  .bk-price { font-family:'Cinzel',Georgia,serif; font-size:.9rem; color:var(--saffron-dark); font-weight:600; }
-  .badge-free { background:#DCFCE7; color:#166534; font-size:.62rem; padding:2px 8px; border-radius:99px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; }
-  .badge-pdf { background:var(--parchment); color:var(--mid-brown); font-size:.62rem; padding:2px 8px; border-radius:99px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; border:1px solid var(--border); }
-  .btn-read { width:100%; background:var(--saffron); color:var(--deep-brown); border:none; padding:8px; font-family:'Cinzel',Georgia,serif; font-size:10.5px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; margin-top:.625rem; border-radius:4px; transition:background .2s; }
-  .btn-read:hover { background:#F59E0B; }
+.bk-price { font-family:'Cinzel',Georgia,serif; font-size:.9rem; color:var(--saffron-dark); font-weight:600; }
+.badge-free { background:#DCFCE7; color:#166534; font-size:.62rem; padding:2px 8px; border-radius:99px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; }
+.badge-pdf { background:var(--parchment); color:var(--mid-brown); font-size:.62rem; padding:2px 8px; border-radius:99px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; border:1px solid var(--border); }
+.book-actions { display:grid; grid-template-columns:1fr; gap:7px; margin-top:.625rem; }
+.btn-read { width:100%; background:var(--saffron); color:var(--deep-brown); border:none; padding:8px; font-family:'Cinzel',Georgia,serif; font-size:10.5px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; margin-top:.625rem; border-radius:4px; transition:background .2s; }
+.btn-read:hover { background:#F59E0B; }
+.book-actions .btn-read { margin-top:0; }
+.btn-download { background:transparent; color:var(--saffron-dark); border:1px solid var(--saffron); }
+.btn-download:hover { background:rgba(217,119,6,.12); }
 
   /* CATEGORIES */
   .cat-section { background:var(--parchment); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
@@ -207,13 +211,13 @@
   .how-section .sec-title span { color:var(--saffron-light); }
   .how-section .sec-label { color:var(--saffron-light); }
   .how-section .orn-line { background:rgba(217,119,6,.3); }
-  .steps-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1.5rem; max-width:960px; margin:0 auto; }
-  .step-card { background:rgba(255,255,255,.04); border:1px solid rgba(217,119,6,.22); border-radius:10px; padding:1.875rem 1.5rem; position:relative; transition:background .2s,transform .2s; }
+  .steps-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1.5rem; max-width:1060px; margin:0 auto; align-items:stretch; }
+  .step-card { background:rgba(255,255,255,.04); border:1px solid rgba(217,119,6,.22); border-radius:10px; padding:2rem 1.625rem; min-height:332px; position:relative; display:grid; grid-template-rows:48px 44px 1fr; align-content:start; transition:background .2s,transform .2s; }
   .step-card:hover { background:rgba(255,255,255,.07); transform:translateY(-3px); }
   .step-num { font-family:'Cinzel',Georgia,serif; font-size:3rem; font-weight:700; color:rgba(217,119,6,.15); line-height:1; position:absolute; top:1rem; right:1.25rem; }
-  .step-icon { font-size:2rem; margin-bottom:1rem; }
-  .step-title { font-family:'Cinzel',Georgia,serif; font-size:.9rem; color:var(--saffron-light); font-weight:600; letter-spacing:.05em; margin-bottom:.5rem; }
-  .step-desc { font-size:.875rem; color:#A89070; line-height:1.65; }
+  .step-icon { font-size:2rem; line-height:1; display:flex; align-items:center; }
+  .step-title { font-family:'Cinzel',Georgia,serif; font-size:.86rem; color:var(--saffron-light); font-weight:600; letter-spacing:.04em; line-height:1.35; display:flex; align-items:center; max-width:165px; }
+  .step-desc { font-size:.86rem; color:#A89070; line-height:1.55; max-width:190px; }
 
   /* PRICING */
   .price-section { background:#fff; }
@@ -274,30 +278,48 @@
   .foot-bottom a { color:var(--saffron-light); text-decoration:none; }
 
   /* MODALS */
-  .modal-overlay { display:none; position:fixed; inset:0; background:rgba(28,10,0,.8); z-index:1000; align-items:center; justify-content:center; padding:1rem; backdrop-filter:blur(4px); }
-  .modal-overlay.active { display:flex; }
-  .modal { background:var(--ivory); border:1px solid var(--border); border-radius:12px; padding:2.5rem 2rem; width:100%; max-width:440px; position:relative; animation:slideup .3s ease; box-shadow:0 24px 64px rgba(0,0,0,.5); }
+.modal-overlay { display:none; position:fixed; inset:0; background:rgba(28,10,0,.8); z-index:1000; align-items:center; justify-content:center; padding:.75rem; backdrop-filter:blur(4px); }
+.modal-overlay.active { display:flex; }
+.modal { background:var(--ivory); border:1px solid var(--border); border-radius:10px; padding:1.5rem 1.625rem; width:100%; max-width:390px; max-height:92vh; overflow:auto; position:relative; animation:slideup .3s ease; box-shadow:0 24px 64px rgba(0,0,0,.5); }
   @keyframes slideup { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
   .modal-close { position:absolute; top:1rem; right:1rem; background:none; border:none; font-size:1.25rem; cursor:pointer; color:var(--text-muted); }
-  .modal-logo { text-align:center; margin-bottom:1.5rem; }
-  .modal-logo-circle { width:58px; height:58px; background:var(--saffron); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-family:'Cinzel',Georgia,serif; font-size:22px; font-weight:700; color:var(--deep-brown); margin-bottom:.875rem; }
-  .modal-title { font-family:'Cinzel',Georgia,serif; font-size:1.2rem; color:var(--deep-brown); margin-bottom:4px; }
-  .modal-sub { font-size:.8rem; color:var(--text-muted); font-style:italic; margin-bottom:1.875rem; font-family:'Noto Sans Telugu','Noto Sans',sans-serif; }
+.modal-logo { text-align:center; margin-bottom:1rem; }
+.modal-logo-circle { width:48px; height:48px; background:var(--saffron); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-family:'Cinzel',Georgia,serif; font-size:19px; font-weight:700; color:var(--deep-brown); margin-bottom:.625rem; }
+.modal-title { font-family:'Cinzel',Georgia,serif; font-size:1.05rem; color:var(--deep-brown); margin-bottom:2px; }
+.modal-sub { font-size:.72rem; color:var(--text-muted); font-style:italic; margin-bottom:1.125rem; font-family:'Noto Sans Telugu','Noto Sans',sans-serif; }
   .tabs { display:flex; border-bottom:2px solid var(--border); margin-bottom:1.5rem; }
-  .tab-btn { flex:1; background:none; border:none; padding:.625rem; font-family:'Cinzel',Georgia,serif; font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-muted); cursor:pointer; border-bottom:2.5px solid transparent; margin-bottom:-2px; transition:all .2s; }
+.tab-btn { flex:1; background:none; border:none; padding:.5rem; font-family:'Cinzel',Georgia,serif; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-muted); cursor:pointer; border-bottom:2.5px solid transparent; margin-bottom:-2px; transition:all .2s; }
   .tab-btn.active { color:var(--saffron-dark); border-bottom-color:var(--saffron); }
-  .form-group { margin-bottom:1rem; }
-  .form-label { display:block; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; color:var(--text-muted); margin-bottom:6px; font-family:'Cinzel',Georgia,serif; }
-  .form-input { width:100%; padding:10px 13px; border:1px solid var(--border); border-radius:4px; background:#fff; font-family:'Libre Baskerville',Georgia,serif; font-size:.9rem; color:var(--text-body); outline:none; transition:border-color .2s; }
-  .form-input:focus { border-color:var(--saffron); }
-  .form-submit { width:100%; background:var(--saffron); color:var(--deep-brown); border:none; padding:12px; font-family:'Cinzel',Georgia,serif; font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; border-radius:4px; cursor:pointer; margin-top:.5rem; transition:background .2s; }
-  .form-submit:hover { background:#F59E0B; }
-  .form-alt { text-align:center; font-size:.8rem; color:var(--text-muted); margin-top:1rem; }
-  .form-alt a { color:var(--saffron-dark); text-decoration:none; cursor:pointer; }
-  .div-or { display:flex; align-items:center; gap:12px; margin:1rem 0; color:var(--text-muted); font-size:.75rem; }
-  .div-or::before,.div-or::after { content:''; flex:1; height:1px; background:var(--border); }
-  .social-btn { width:100%; background:#fff; border:1px solid var(--border); border-radius:4px; padding:10px; font-size:.85rem; color:var(--text-body); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; transition:background .15s; }
-  .social-btn:hover { background:var(--parchment); }
+.form-group { margin-bottom:.75rem; }
+.form-label { display:block; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; color:var(--text-muted); margin-bottom:6px; font-family:'Cinzel',Georgia,serif; }
+.form-input { width:100%; padding:8px 11px; border:1px solid var(--border); border-radius:4px; background:#fff; font-family:'Libre Baskerville',Georgia,serif; font-size:.84rem; color:var(--text-body); outline:none; transition:border-color .2s; }
+.form-input:focus { border-color:var(--saffron); }
+.form-input.invalid { border-color:#B91C1C; background:#FEF2F2; }
+.form-message { display:none; margin:.25rem 0 .75rem; padding:9px 11px; border-radius:4px; font-size:.78rem; line-height:1.45; }
+.form-message.error { display:block; background:#FEF2F2; color:#991B1B; border:1px solid #FCA5A5; }
+.form-message.success { display:block; background:#F0FDF4; color:#166534; border:1px solid #86EFAC; }
+.form-submit { width:100%; background:var(--saffron); color:var(--deep-brown); border:none; padding:10px; font-family:'Cinzel',Georgia,serif; font-size:11.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; border-radius:4px; cursor:pointer; margin-top:.375rem; transition:background .2s; }
+.form-submit:hover { background:#F59E0B; }
+.form-submit:disabled { opacity:.65; cursor:not-allowed; }
+.form-alt { text-align:center; font-size:.8rem; color:var(--text-muted); margin-top:1rem; }
+.form-alt a { color:var(--saffron-dark); text-decoration:none; cursor:pointer; }
+.div-or { display:flex; align-items:center; gap:12px; margin:1rem 0; color:var(--text-muted); font-size:.75rem; }
+.div-or::before,.div-or::after { content:''; flex:1; height:1px; background:var(--border); }
+.social-btn { width:100%; background:#fff; border:1px solid var(--border); border-radius:4px; padding:10px; font-size:.85rem; color:var(--text-body); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; transition:background .15s; }
+.social-btn:hover { background:var(--parchment); }
+.info-modal { max-width:620px; }
+.info-title { font-family:'Cinzel',Georgia,serif; font-size:1.25rem; color:var(--deep-brown); margin-bottom:.875rem; }
+.info-content { color:var(--text-body); font-size:.9rem; line-height:1.65; }
+.info-content h4 { font-family:'Cinzel',Georgia,serif; font-size:.82rem; color:var(--saffron-dark); letter-spacing:.06em; text-transform:uppercase; margin:1rem 0 .35rem; }
+.info-content p { margin-bottom:.75rem; }
+.info-content ul { padding-left:1.1rem; margin:.4rem 0 .85rem; }
+.info-content li { margin-bottom:.35rem; }
+.info-content a { color:var(--saffron-dark); }
+.reader-modal { width:min(1100px,96vw); max-width:1100px; height:92vh; padding:1rem; display:flex; flex-direction:column; }
+.reader-head { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:.75rem; padding-right:2rem; }
+.reader-title { font-family:'Cinzel',Georgia,serif; font-size:1rem; color:var(--deep-brown); font-weight:700; }
+.reader-note { font-size:.74rem; color:var(--text-muted); }
+.reader-frame { flex:1; width:100%; border:1px solid var(--border); border-radius:6px; background:#fff; }
   /* download modal */
   .dl-modal { max-width:380px; }
   .dl-book-title { font-family:'Noto Sans Telugu','Noto Sans',sans-serif; font-size:1.1rem; color:var(--deep-brown); text-align:center; margin-bottom:4px; font-weight:600; }
@@ -317,7 +339,11 @@
   @keyframes notifin { from{opacity:0;transform:translateX(30px)} to{opacity:1;transform:translateX(0)} }
 
   /* RESPONSIVE */
-  @media(max-width:900px){ .foot-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:900px){
+    .foot-grid{grid-template-columns:1fr 1fr;}
+    .steps-grid{grid-template-columns:repeat(2,minmax(0,1fr)); max-width:620px;}
+    .step-desc{max-width:220px;}
+  }
   @media(max-width:768px){
     .nav-links{display:none;} .nav-ham{display:flex;}
     .hero{padding:3rem 1.5rem 4rem; min-height:80vh;}
@@ -330,6 +356,9 @@
   @media(max-width:480px){
     .foot-grid{grid-template-columns:1fr;}
     .price-grid{grid-template-columns:1fr;}
+    .steps-grid{grid-template-columns:1fr;}
+    .step-card{min-height:auto;}
+    .step-title,.step-desc{max-width:none;}
     .hero h1{font-size:1.8rem;}
   }
 </style>
@@ -341,25 +370,23 @@
   <div class="nav-inner">
     <a href="#" class="nav-brand">
       <div class="nav-logo">గా</div>
-      <div class="nav-title">Gayatri Prachuranalu<span>గాయత్రీ ప్రచురణాలు</span></div>
+      <div class="nav-title">Gayatri Prachuranalu<span>గాయత్రి ప్రచురణలు</span></div>
     </a>
     <ul class="nav-links">
       <li><a href="#books">Library</a></li>
       <li><a href="#categories">Categories</a></li>
-      <li><a href="#pricing">Plans</a></li>
       <li><a href="#how">How It Works</a></li>
-      <li><a href="#" onclick="openModal('login')">Sign In</a></li>
-      <li><a href="#" class="nav-btn" onclick="openModal('signup')">Join Free</a></li>
+      <li><a href="#" id="navSignIn" onclick="openModal('login')">Sign In</a></li>
+      <li><a href="#" id="navJoin" class="nav-btn" onclick="openModal('signup')">Join Free</a></li>
     </ul>
     <button class="nav-ham" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
   <div class="mob-menu" id="mobMenu">
     <a href="#books">Library</a>
     <a href="#categories">Categories</a>
-    <a href="#pricing">Plans</a>
     <a href="#how">How It Works</a>
-    <a href="#" onclick="openModal('login')">Sign In</a>
-    <a href="#" onclick="openModal('signup')" class="mob-join">Join Free</a>
+    <a href="#" id="mobSignIn" onclick="openModal('login')">Sign In</a>
+    <a href="#" id="mobJoin" onclick="openModal('signup')" class="mob-join">Join Free</a>
   </div>
 </nav>
 
@@ -370,7 +397,7 @@
   <div class="hero-glow2"></div>
   <div class="hero-content">
     <div class="hero-om">ॐ</div>
-    <h1>Gayatri Prachuranalu<span>గాయత్రీ ప్రచురణాలు</span></h1>
+    <h1>Gayatri Prachuranalu<span>గాయత్రి ప్రచురణలు</span></h1>
     <div class="hero-div">
       <span class="div-line"></span>
       <span class="div-lotus">✿</span>
@@ -384,9 +411,9 @@
     <div class="hero-trust">
       🔒 Secure &amp; Trusted
       <span class="dot">·</span>
-      📥 Instant Downloads
+      📖 Free Online Reading
       <span class="dot">·</span>
-      💳 Pay Per Book
+      💳 ₹99 per Book or Subscribe
     </div>
   </div>
 </section>
@@ -394,23 +421,23 @@
 <!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stat-item">
-    <div class="stat-num" id="sn1">500+</div>
+    <div class="stat-num" id="sn1">14</div>
     <div class="stat-label">Books Available</div>
   </div>
   <div class="stat-sep"></div>
   <div class="stat-item">
-    <div class="stat-num" id="sn2">12,000+</div>
-    <div class="stat-label">Registered Readers</div>
+    <div class="stat-num" id="sn2">Free</div>
+    <div class="stat-label">Account Signup</div>
   </div>
   <div class="stat-sep"></div>
   <div class="stat-item">
-    <div class="stat-num" id="sn3">25+</div>
+    <div class="stat-num" id="sn3">3</div>
     <div class="stat-label">Categories</div>
   </div>
   <div class="stat-sep"></div>
   <div class="stat-item">
-    <div class="stat-num">₹30</div>
-    <div class="stat-label">PDFs From</div>
+    <div class="stat-num">₹99</div>
+    <div class="stat-label">Per PDF</div>
   </div>
 </div>
 
@@ -423,7 +450,7 @@
   </div>
   <div class="books-grid" id="booksGrid"></div>
   <div class="sec-cta">
-    <a href="#" class="btn-primary" onclick="showNotif('Full library coming soon! 📚')">View All 500+ Books →</a>
+    <button class="btn-primary" id="viewAllBooksBtn" onclick="toggleAllBooks()">View All Books →</button>
   </div>
 </section>
 
@@ -435,53 +462,23 @@
     <div class="orn"><span class="orn-line"></span><span class="orn-dia"></span><span class="orn-line"></span></div>
   </div>
   <div class="cat-grid">
-    <a class="cat-card" href="#">
-      <span class="cat-icon">🙏</span>
-      <span class="cat-te">భక్తి సాహిత్యం</span>
-      <span class="cat-en">Devotional Literature</span>
-      <span class="cat-count">142 books</span>
-    </a>
-    <a class="cat-card" href="#">
+    <a class="cat-card" href="#books" onclick="filterByCategory('Agama Related');return false;">
       <span class="cat-icon">📿</span>
-      <span class="cat-te">స్తోత్రాలు</span>
-      <span class="cat-en">Stotras &amp; Mantras</span>
-      <span class="cat-count">98 books</span>
+      <span class="cat-te">ఆగమ గ్రంథాలు</span>
+      <span class="cat-en">Agama Related</span>
+      <span class="cat-count">3 books</span>
     </a>
-    <a class="cat-card" href="#">
+    <a class="cat-card" href="#books" onclick="filterByCategory('Dharma Sutras');return false;">
+      <span class="cat-icon">⚖️</span>
+      <span class="cat-te">ధర్మ సూత్రాలు</span>
+      <span class="cat-en">Dharma Sutras</span>
+      <span class="cat-count">5 books</span>
+    </a>
+    <a class="cat-card" href="#books" onclick="filterByCategory('Puranas');return false;">
       <span class="cat-icon">📖</span>
       <span class="cat-te">పురాణాలు</span>
       <span class="cat-en">Puranas</span>
-      <span class="cat-count">76 books</span>
-    </a>
-    <a class="cat-card" href="#">
-      <span class="cat-icon">🧘</span>
-      <span class="cat-te">యోగ &amp; వేదాంత</span>
-      <span class="cat-en">Yoga &amp; Vedanta</span>
-      <span class="cat-count">64 books</span>
-    </a>
-    <a class="cat-card" href="#">
-      <span class="cat-icon">✍️</span>
-      <span class="cat-te">తెలుగు కవిత్వం</span>
-      <span class="cat-en">Telugu Poetry</span>
-      <span class="cat-count">55 books</span>
-    </a>
-    <a class="cat-card" href="#">
-      <span class="cat-icon">🌸</span>
-      <span class="cat-te">నవలలు</span>
-      <span class="cat-en">Novels</span>
-      <span class="cat-count">48 books</span>
-    </a>
-    <a class="cat-card" href="#">
-      <span class="cat-icon">🏛️</span>
-      <span class="cat-te">చరిత్ర</span>
-      <span class="cat-en">History</span>
-      <span class="cat-count">37 books</span>
-    </a>
-    <a class="cat-card" href="#">
-      <span class="cat-icon">👶</span>
-      <span class="cat-te">పిల్లల పుస్తకాలు</span>
-      <span class="cat-en">Children's Books</span>
-      <span class="cat-count">30 books</span>
+      <span class="cat-count">6 books</span>
     </a>
   </div>
 </section>
@@ -498,19 +495,19 @@
       <div class="step-num">01</div>
       <div class="step-icon">👤</div>
       <div class="step-title">Create an Account</div>
-      <p class="step-desc">Register for free with your email. Choose from flexible plans — free browsing or premium access.</p>
+      <p class="step-desc">Register for free with your email. Every book can be read online at no cost.</p>
     </div>
     <div class="step-card">
       <div class="step-num">02</div>
       <div class="step-icon">📚</div>
       <div class="step-title">Browse the Library</div>
-      <p class="step-desc">Explore 500+ Telugu books across spiritual, devotional, literary, and classical categories. Read previews free.</p>
+      <p class="step-desc">Explore Telugu books across spiritual, devotional, literary, and classical categories. Open any title and read online free.</p>
     </div>
     <div class="step-card">
       <div class="step-num">03</div>
       <div class="step-icon">📄</div>
       <div class="step-title">Download PDF</div>
-      <p class="step-desc">Pay a small amount (₹30–₹99) to download the PDF of any book to your device — yours to keep forever.</p>
+      <p class="step-desc">Download any book's PDF for ₹99 — or subscribe for downloads included. Online reading stays free for everyone.</p>
     </div>
     <div class="step-card">
       <div class="step-num">04</div>
@@ -531,14 +528,13 @@
   <div class="price-grid">
     <div class="price-card">
       <div class="plan-name">Shishya — శిష్య</div>
-      <div class="plan-desc">Seeker's Free Access</div>
+      <div class="plan-desc">Free online reading</div>
       <div class="plan-price"><span class="plan-amount">₹0</span> <span class="plan-period">/ forever</span></div>
       <ul class="plan-feats">
         <li><span class="ck">✓</span> Browse full catalog</li>
-        <li><span class="ck">✓</span> Read first 20 pages free</li>
+        <li><span class="ck">✓</span> Read every book online free</li>
         <li><span class="ck">✓</span> Wishlist &amp; bookmarks</li>
-        <li><span class="cx">✗</span> Full book access</li>
-        <li><span class="cx">✗</span> PDF downloads</li>
+        <li><span class="ck">✓</span> Download any book for ₹99</li>
       </ul>
       <button class="btn-plan" onclick="openModal('signup')">Start Free</button>
     </div>
@@ -548,13 +544,12 @@
       <div class="plan-desc">The Practitioner's Plan</div>
       <div class="plan-price"><span class="plan-amount">₹199</span> <span class="plan-period">/ month</span></div>
       <ul class="plan-feats">
-        <li><span class="ck">✓</span> Unlimited online reading</li>
-        <li><span class="ck">✓</span> 5 PDF downloads / month</li>
-        <li><span class="ck">✓</span> New releases early access</li>
+        <li><span class="ck">✓</span> Everything in Shishya</li>
+        <li><span class="ck">✓</span> 5 PDF downloads / month included</li>
         <li><span class="ck">✓</span> Reading history &amp; notes</li>
-        <li><span class="ck">✓</span> Cancel anytime</li>
+        <li><span class="ck">✓</span> New arrivals first</li>
       </ul>
-      <button class="btn-plan" onclick="openModal('signup')">Start 7-Day Free Trial</button>
+      <button class="btn-plan" onclick="planComingSoon()">Choose Sadhaka</button>
     </div>
     <div class="price-card">
       <div class="plan-name">Guru — గురు</div>
@@ -563,14 +558,13 @@
       <ul class="plan-feats">
         <li><span class="ck">✓</span> Everything in Sadhaka</li>
         <li><span class="ck">✓</span> Unlimited PDF downloads</li>
-        <li><span class="ck">✓</span> Offline reading mode</li>
+        <li><span class="ck">✓</span> Early access to new releases</li>
         <li><span class="ck">✓</span> Priority support</li>
-        <li><span class="ck">✓</span> Family sharing (up to 4)</li>
       </ul>
-      <button class="btn-plan dark" onclick="openModal('signup')">Get Guru Access</button>
+      <button class="btn-plan dark" onclick="planComingSoon()">Choose Guru</button>
     </div>
   </div>
-  <p class="price-note">Individual PDFs available without subscription starting at ₹30 per book.</p>
+  <p class="price-note">All signed-in members read online for free. Download any book for ₹99 — or subscribe for downloads included.</p>
 </section>
 
 <!-- TESTIMONIALS -->
@@ -583,7 +577,7 @@
   <div class="testi-grid">
     <div class="testi-card">
       <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"గాయత్రీ ప్రచురణాలు వల్ల మా పూర్వీకుల గ్రంథాలు మళ్ళీ చదవగలిగాను. చాలా సంతోషంగా ఉంది!"</p>
+      <p class="testi-text">"గాయత్రి ప్రచురణలు వల్ల మా పూర్వీకుల గ్రంథాలు మళ్ళీ చదవగలిగాను. చాలా సంతోషంగా ఉంది!"</p>
       <div class="testi-author">
         <div class="auth-av" style="background:var(--saffron-dark)">LR</div>
         <div><div class="auth-name">Lakshmi Raghavendra</div><div class="auth-loc">Hyderabad, Telangana</div></div>
@@ -627,7 +621,7 @@
   <div class="foot-grid">
     <div>
       <div class="foot-brand">Gayatri Prachuranalu</div>
-      <div class="foot-brand-te">గాయత్రీ ప్రచురణాలు</div>
+      <div class="foot-brand-te">గాయత్రి ప్రచురణలు</div>
       <p class="foot-desc">Preserving and sharing the rich literary and spiritual heritage of Telugu language and culture — accessible to readers worldwide.</p>
     </div>
     <div>
@@ -635,9 +629,9 @@
       <ul class="foot-links">
         <li><a href="#books">Browse All Books</a></li>
         <li><a href="#categories">Categories</a></li>
-        <li><a href="#pricing">Membership Plans</a></li>
-        <li><a href="#">New Arrivals</a></li>
-        <li><a href="#">Free Books</a></li>
+        <li><a href="#pricing">PDF Pricing</a></li>
+        <li><a href="#books" onclick="showNotif('Showing the latest uploaded books.')">New Arrivals</a></li>
+        <li><a href="#books" onclick="showNotif('All books are free to read online.')">Free Books</a></li>
       </ul>
     </div>
     <div>
@@ -645,27 +639,50 @@
       <ul class="foot-links">
         <li><a onclick="openModal('signup')">Create Account</a></li>
         <li><a onclick="openModal('login')">Sign In</a></li>
-        <li><a href="#">My Library</a></li>
-        <li><a href="#">Downloads</a></li>
-        <li><a href="#">Reading History</a></li>
+        <li><a href="#" onclick="accountAction('library')">My Library</a></li>
+        <li><a href="#" onclick="accountAction('downloads')">Downloads</a></li>
+        <li><a href="#" onclick="accountAction('history')">Reading History</a></li>
       </ul>
     </div>
     <div>
       <div class="foot-col-title">Support</div>
       <ul class="foot-links">
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Terms of Use</a></li>
-        <li><a href="#">Refund Policy</a></li>
+        <li><a href="#" onclick="openInfo('contact')">Contact Us</a></li>
+        <li><a href="#" onclick="openInfo('faq')">FAQ</a></li>
+        <li><a href="#" onclick="openInfo('privacy')">Privacy Policy</a></li>
+        <li><a href="#" onclick="openInfo('terms')">Terms of Use</a></li>
+        <li><a href="#" onclick="openInfo('refund')">Refund Policy</a></li>
       </ul>
     </div>
   </div>
   <div class="foot-bottom">
-    <span>© 2025 Gayatri Prachuranalu. All rights reserved.</span>
+    <span>© 2026 Gayatri Prachuranalu. All rights reserved.</span>
     <span>Made with ❤️ for Telugu readers worldwide · <a href="mailto:info@gayatriprachuranalu.com">info@gayatriprachuranalu.com</a></span>
   </div>
 </footer>
+
+<!-- INFO MODAL -->
+<div class="modal-overlay" id="infoModal" onclick="bgClose(event,'infoModal')">
+  <div class="modal info-modal">
+    <button class="modal-close" onclick="closeInfo()">✕</button>
+    <div class="info-title" id="infoTitle">Information</div>
+    <div class="info-content" id="infoContent"></div>
+  </div>
+</div>
+
+<!-- READER MODAL -->
+<div class="modal-overlay" id="readerModal" onclick="bgClose(event,'readerModal')">
+  <div class="modal reader-modal">
+    <button class="modal-close" onclick="closeReader()">✕</button>
+    <div class="reader-head">
+      <div>
+        <div class="reader-title" id="readerTitle">Book Reader</div>
+        <div class="reader-note">Online reading is available after sign-in. PDF download requires payment.</div>
+      </div>
+    </div>
+    <iframe class="reader-frame" id="readerFrame" title="Book reader"></iframe>
+  </div>
+</div>
 
 <!-- AUTH MODAL -->
 <div class="modal-overlay" id="authModal" onclick="bgClose(event,'authModal')">
@@ -674,34 +691,36 @@
     <div class="modal-logo">
       <div class="modal-logo-circle">గా</div>
       <div class="modal-title">Gayatri Prachuranalu</div>
-      <div class="modal-sub">గాయత్రీ ప్రచురణాలు</div>
+      <div class="modal-sub">గాయత్రి ప్రచురణలు</div>
     </div>
     <div class="tabs">
-      <button class="tab-btn active" id="loginTab" onclick="switchTab('login')">Sign In</button>
-      <button class="tab-btn" id="signupTab" onclick="switchTab('signup')">Create Account</button>
+      <button class="tab-btn active" id="loginTab" onclick="switchTab('login')" data-i18n="tabLogin">Sign In</button>
+      <button class="tab-btn" id="signupTab" onclick="switchTab('signup')" data-i18n="tabSignup">Create Account</button>
     </div>
-    <div id="loginForm">
-      <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" placeholder="your@email.com"></div>
-      <div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" placeholder="••••••••"></div>
-      <button class="form-submit" onclick="showNotif('Welcome back! You are now signed in. 🙏')">Sign In to Library</button>
+    <form id="loginForm" novalidate>
+      <div class="form-message" id="loginMsg" aria-live="polite"></div>
+      <div class="form-group"><label class="form-label" data-i18n="email">Email Address</label><input type="email" class="form-input" placeholder="your@email.com"></div>
+      <div class="form-group"><label class="form-label" data-i18n="password">Password</label><input type="password" class="form-input" placeholder="••••••••"></div>
+      <button class="form-submit" onclick="showNotif('Welcome back! You are now signed in. 🙏')" data-i18n="loginSubmit">Sign In to Library</button>
       <div class="div-or">or continue with</div>
       <button class="social-btn" onclick="showNotif('Google sign-in coming soon!')">
         <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
         Sign in with Google
       </button>
-      <p class="form-alt"><a onclick="switchTab('signup')">Don't have an account? Join free →</a></p>
-    </div>
-    <div id="signupForm" style="display:none">
-      <div class="form-group"><label class="form-label">Full Name</label><input type="text" class="form-input" placeholder="మీ పేరు / Your Name"></div>
-      <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" placeholder="your@email.com"></div>
-      <div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" placeholder="Create a strong password"></div>
-      <div class="form-group"><label class="form-label">Preferred Language</label>
-        <select class="form-input"><option>తెలుగు (Telugu)</option><option>English</option><option>Both</option></select>
+      <p class="form-alt"><a onclick="switchTab('signup')" data-i18n="toSignup">Don't have an account? Join free →</a></p>
+    </form>
+    <form id="signupForm" style="display:none" novalidate>
+      <div class="form-message" id="signupMsg" aria-live="polite"></div>
+      <div class="form-group"><label class="form-label" data-i18n="fullName">Full Name</label><input type="text" class="form-input" id="signupName" placeholder="మీ పేరు / Your Name"></div>
+      <div class="form-group"><label class="form-label" data-i18n="email">Email Address</label><input type="email" class="form-input" placeholder="your@email.com"></div>
+      <div class="form-group"><label class="form-label" data-i18n="password">Password</label><input type="password" class="form-input" id="signupPassword" placeholder="Create a strong password"></div>
+      <div class="form-group"><label class="form-label" data-i18n="language">Preferred Language</label>
+        <select class="form-input" id="languagePref"><option value="te">తెలుగు (Telugu)</option><option value="en">English</option><option value="both">Both</option></select>
       </div>
-      <button class="form-submit" onclick="showNotif('Account created! Welcome to Gayatri Prachuranalu. 🙏')">Create Free Account</button>
-      <p class="form-alt" style="font-size:.72rem;margin-top:.75rem">By creating an account you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
-      <p class="form-alt"><a onclick="switchTab('login')">Already have an account? Sign in →</a></p>
-    </div>
+      <button class="form-submit" onclick="showNotif('Account created! Welcome to Gayatri Prachuranalu. 🙏')" data-i18n="signupSubmit">Create Free Account</button>
+      <p class="form-alt" style="font-size:.72rem;margin-top:.75rem" data-i18n="termsText">By creating an account you agree to our Terms and Privacy Policy.</p>
+      <p class="form-alt"><a onclick="switchTab('login')" data-i18n="toLogin">Already have an account? Sign in →</a></p>
+    </form>
   </div>
 </div>
 
@@ -712,53 +731,282 @@
     <div class="modal-logo"><div class="modal-logo-circle" style="font-size:1.5rem">📄</div></div>
     <div class="dl-book-title" id="dlTitle">Book Title</div>
     <p class="dl-author" id="dlAuthor"></p>
-    <div class="dl-price-box"><span class="dl-price" id="dlPrice">₹49</span><span class="dl-price-note">One-time payment · PDF yours to keep forever</span></div>
-    <p class="pay-label">Select Payment Method</p>
-    <div class="pay-grid">
-      <div class="pay-method selected" onclick="selPay(this)"><span class="pay-icon">📱</span>UPI / GPay</div>
-      <div class="pay-method" onclick="selPay(this)"><span class="pay-icon">💳</span>Card</div>
-      <div class="pay-method" onclick="selPay(this)"><span class="pay-icon">🏦</span>Net Banking</div>
-      <div class="pay-method" onclick="selPay(this)"><span class="pay-icon">💰</span>Wallet</div>
+    <div class="dl-price-box" style="text-align:center">
+      <span style="font-size:1.75rem">🚧</span>
+      <span class="dl-price-note" style="display:block;font-size:.92rem;line-height:1.65;color:var(--text-body);margin-top:.5rem">
+        <strong>PDF downloads are coming soon.</strong><br>
+        We're currently setting up secure payments, so downloads aren't available yet — but you can <strong>read this book online for free</strong> right now after signing in.
+      </span>
     </div>
-    <button class="form-submit" onclick="showNotif('Payment processing… PDF download starting shortly. 📥'); closeDL();">Pay &amp; Download PDF</button>
-    <p class="secure-note">🔒 Secure payment · Instant download · No subscription required</p>
+    <button class="form-submit" onclick="closeDL()">Got it</button>
+    <p class="secure-note">Tip: close this and tap "Read Online" to read it now.</p>
   </div>
 </div>
 
 <div class="notif" id="notif"></div>
 
-<script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+  updateProfile,
+  onAuthStateChanged,
+  signOut as firebaseSignOut
+} from "https://www.gstatic.com/firebasejs/12.14.0/firebase-auth.js";
+
 const books = [
-  {title:"గాయత్రీ మహత్మ్యం",author:"వేదవ్యాస",en:"Gayatri Mahatmyam",price:"₹49",color:"#7C2D12",icon:"🙏",free:false},
-  {title:"భాగవతం",author:"పోతన",en:"Potana Bhagavatam",price:"₹89",color:"#78350F",icon:"📿",free:false},
-  {title:"వేంకటేశ్వర సుప్రభాతం",author:"అజ్ఞాతం",en:"Venkateswara Suprabhatam",price:"Free",color:"#1A4731",icon:"✨",free:true},
-  {title:"లలితా సహస్రనామం",author:"అగస్త్య మహర్షి",en:"Lalita Sahasranamam",price:"₹39",color:"#5B21B6",icon:"🌸",free:false},
-  {title:"రామాయణం",author:"వాల్మీకి",en:"Valmiki Ramayanam",price:"₹99",color:"#991B1B",icon:"🏹",free:false},
-  {title:"ఆంధ్రమహాభారతం",author:"నన్నయ భట్టు",en:"Andhra Mahabharatam",price:"₹120",color:"#1E3A5F",icon:"⚔️",free:false},
-  {title:"హనుమాన్ చాలీసా",author:"తులసీదాస్",en:"Hanuman Chalisa Telugu",price:"Free",color:"#166534",icon:"🐒",free:true},
-  {title:"శివపురాణం",author:"వేదవ్యాస",en:"Shiva Purana",price:"₹79",color:"#374151",icon:"🔱",free:false},
+  {
+    title:"Padmodbhava Samhita",
+    author:"Gayatri Prachuranalu",
+    en:"Padmodbhava Samhita",
+    price:"₹99",
+    color:"#7C2D12",
+    icon:"📿",
+    free:false,
+    readUrl:"assets/Books_to_upload/Agama Related/Padmodbhava Samhita.pdf",
+    pdfUrl:"",
+    coverUrl:"assets/covers/Cover_pages/1_padmodbhava_samhita.jpg"
+  },
+  {
+    title:"Shrimannarayana Samhita - Part 2",
+    author:"Gayatri Prachuranalu",
+    en:"Shrimannarayana Samhita - Part 2",
+    price:"₹99",
+    color:"#78350F",
+    icon:"📜",
+    free:false,
+    readUrl:"assets/Books_to_upload/Agama Related/Part 2 Shrimannarayana Samhita.pdf",
+    pdfUrl:"",
+    coverUrl:""
+  },
+  {
+    title:"Vishnu Samhita",
+    author:"Gayatri Prachuranalu",
+    en:"Vishnu Samhita",
+    price:"₹99",
+    color:"#1A4731",
+    icon:"🕉",
+    free:false,
+    readUrl:"assets/Books_to_upload/Agama Related/Vishnu Samhita.pdf",
+    pdfUrl:"",
+    coverUrl:""
+  },
+  {
+    title:"Aapasthambha Kalpasuthram - Part 1",
+    author:"Gayatri Prachuranalu",
+    en:"Aapasthambha Kalpasuthram - Part 1",
+    price:"₹99",
+    color:"#5B21B6",
+    icon:"📖",
+    free:false,
+    readUrl:"assets/Books_to_upload/Dharma Sutras/005 part 1 aapasthambha kalpasuthram.pdf",
+    pdfUrl:"",
+    coverUrl:"assets/covers/Cover_pages/1_apastamba_kalpa_sutram.jpg"
+  },
+  {
+    title:"Ashvalaayana Gruhasyasuthramu",
+    author:"Gayatri Prachuranalu",
+    en:"Ashvalaayana Gruhasyasuthramu",
+    price:"₹99",
+    color:"#991B1B",
+    icon:"🏛",
+    free:false,
+    readUrl:"assets/Books_to_upload/Dharma Sutras/ashvalaayana gruhasyasuthramu.pdf",
+    pdfUrl:"",
+    coverUrl:"assets/covers/Cover_pages/1_ashealayana_gruhya1.jpg"
+  },
+  {
+    title:"Bhodhayana Dharma Suthramu",
+    author:"Gayatri Prachuranalu",
+    en:"Bhodhayana Dharma Suthramu",
+    price:"₹99",
+    color:"#1E3A5F",
+    icon:"⚖",
+    free:false,
+    readUrl:"assets/Books_to_upload/Dharma Sutras/bhodhayana dharma suthramu.pdf",
+    pdfUrl:"",
+    coverUrl:"assets/covers/Cover_pages/1_Bodhayana_Dharma.jpg"
+  },
+  {
+    title:"Manusmruthi",
+    author:"Gayatri Prachuranalu",
+    en:"Manusmruthi",
+    price:"₹99",
+    color:"#166534",
+    icon:"📚",
+    free:false,
+    readUrl:"assets/Books_to_upload/Dharma Sutras/Manusmruthi.pdf",
+    pdfUrl:"",
+    coverUrl:"assets/covers/Cover_pages/1_manu_smruti.jpg"
+  },
+  {
+    title:"Aapasthambha Kalpasuthram",
+    author:"Gayatri Prachuranalu",
+    en:"Aapasthambha Kalpasuthram",
+    price:"₹99",
+    color:"#374151",
+    icon:"📘",
+    free:false,
+    readUrl:"assets/Books_to_upload/Dharma Sutras/part 1 aapasthambha kalpasuthram.pdf",
+    pdfUrl:"",
+    coverUrl:"assets/covers/Cover_pages/1_apastamba_kalpa_sutram1.jpg"
+  },
+  {
+    title:"Shrimad Bhagavatham - Part 1",
+    author:"Gayatri Prachuranalu",
+    en:"Shrimad Bhagavatham - Part 1",
+    price:"₹99",
+    color:"#7C2D12",
+    icon:"🙏",
+    free:false,
+    readUrl:"assets/Books_to_upload/Puranas/Shrimad Bhagavatham/Part 1(1,2 sk) shrimad Bhagavatham.pdf",
+    pdfUrl:"",
+    coverUrl:"assets/covers/Cover_pages/1_bhagavatam_moolam1.jpg"
+  },
+  {
+    title:"Shrimad Bhagavatham - Part 2",
+    author:"Gayatri Prachuranalu",
+    en:"Shrimad Bhagavatham - Part 2",
+    price:"₹99",
+    color:"#78350F",
+    icon:"🙏",
+    free:false,
+    readUrl:"assets/Books_to_upload/Puranas/Shrimad Bhagavatham/Part 2 (3 sk) Shrimad Bhagavatham.pdf",
+    pdfUrl:"",
+    coverUrl:"assets/covers/Cover_pages/1_bhagavatam_moolam2.jpg"
+  },
+  {
+    title:"Shrimad Bhagavatham - Part 4",
+    author:"Gayatri Prachuranalu",
+    en:"Shrimad Bhagavatham - Part 4",
+    price:"₹99",
+    color:"#1A4731",
+    icon:"🙏",
+    free:false,
+    readUrl:"assets/Books_to_upload/Puranas/Shrimad Bhagavatham/Part 4 (5,6 sk) shrimad Bhagavatham .pdf",
+    pdfUrl:"",
+    coverUrl:"assets/covers/Cover_pages/1_bhagavatam_moolam1.jpg"
+  },
+  {
+    title:"Shrimad Bhagavatham - Part 6",
+    author:"Gayatri Prachuranalu",
+    en:"Shrimad Bhagavatham - Part 6",
+    price:"₹99",
+    color:"#5B21B6",
+    icon:"🙏",
+    free:false,
+    readUrl:"assets/Books_to_upload/Puranas/Shrimad Bhagavatham/Part 6(8,9sk) shrimad Bhagavatham.pdf",
+    pdfUrl:"",
+    coverUrl:"assets/covers/Cover_pages/1_bhagavatam_moolam2.jpg"
+  },
+  {
+    title:"Shrimad Bhagavatam - Part 8",
+    author:"Gayatri Prachuranalu",
+    en:"Shrimad Bhagavatam - Part 8",
+    price:"₹99",
+    color:"#991B1B",
+    icon:"🙏",
+    free:false,
+    readUrl:"assets/Books_to_upload/Puranas/Shrimad Bhagavatham/Part 8 (10 SK) Shrimadbhagavatam.pdf",
+    pdfUrl:"",
+    coverUrl:"assets/covers/Cover_pages/1_bhagavatam_moolam1.jpg"
+  },
+  {
+    title:"Shrimad Bhagavatham - Part 9",
+    author:"Gayatri Prachuranalu",
+    en:"Shrimad Bhagavatham - Part 9",
+    price:"₹99",
+    color:"#1E3A5F",
+    icon:"🙏",
+    free:false,
+    readUrl:"assets/Books_to_upload/Puranas/Shrimad Bhagavatham/Part 9(10sk) Shrimad Bagavatham .pdf",
+    pdfUrl:"",
+    coverUrl:"assets/covers/Cover_pages/1_bhagavatam_moolam2.jpg"
+  },
 ];
 
-const grid = document.getElementById('booksGrid');
-books.forEach(b => {
-  const c = document.createElement('div');
-  c.className = 'book-card';
-  c.innerHTML = `
-    <div class="book-cover" style="background:${b.color}">
-      <div class="bk-icon">${b.icon}</div>
-      <div class="bk-title">${b.title}</div>
-      <div class="bk-en">${b.en}</div>
-    </div>
-    <div class="book-info">
-      <div class="bk-author">${b.author}</div>
-      <div class="bk-price-row">
-        <span class="bk-price">${b.free?'':b.price}</span>
-        ${b.free?'<span class="badge-free">Free</span>':'<span class="badge-pdf">PDF</span>'}
-      </div>
-      <button class="btn-read" onclick="${b.free?`showNotif('Downloading free PDF… 📥')`:`openDL('${b.title}','${b.author}','${b.price}')`}">${b.free?'Download Free':'Read / Download'}</button>
-    </div>`;
-  grid.appendChild(c);
+const DOWNLOAD_PRICE = "₹99";
+const CATEGORIES = { agama:'Agama Related', dharma:'Dharma Sutras', puranas:'Puranas' };
+// Same slug rule as scripts/upload-to-storage.mjs so book ids match the Storage paths.
+const slugify = s => (s || '').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+books.forEach(book => {
+  book.downloadPrice = DOWNLOAD_PRICE;
+  book.freeToRead = true;
+  book.readUrl = book.readUrl || "";
+  book.pdfUrl = book.pdfUrl || "";
+  book.coverUrl = book.coverUrl || "";
+  book.id = book.id || slugify(book.en || book.title);
+  // Derive category from the source path (kept explicit so it survives the Phase 2 Storage move).
+  if(!book.category){
+    const src = book.readUrl || "";
+    if(src.includes('/Agama Related/')) book.category = CATEGORIES.agama;
+    else if(src.includes('/Dharma Sutras/')) book.category = CATEGORIES.dharma;
+    else if(src.includes('/Puranas/')) book.category = CATEGORIES.puranas;
+    else book.category = "";
+  }
 });
+
+const FEATURED_BOOK_COUNT = 10;
+let showingAllBooks = false;
+let activeCategory = null;
+const grid = document.getElementById('booksGrid');
+const featuredBooks = [...books].sort((a,b) => Number(Boolean(b.coverUrl)) - Number(Boolean(a.coverUrl)));
+
+function renderBooks(){
+  grid.innerHTML = '';
+  const copy = getSiteCopy();
+  const pool = activeCategory ? featuredBooks.filter(b => b.category === activeCategory) : featuredBooks;
+  const visibleBooks = (showingAllBooks || activeCategory) ? pool : pool.slice(0, FEATURED_BOOK_COUNT);
+  visibleBooks.forEach(b => {
+    const c = document.createElement('div');
+    c.className = 'book-card';
+    c.innerHTML = `
+      <div class="book-cover" style="background:${b.color}">
+        ${b.coverUrl ? `<img src="${b.coverUrl}" alt="${b.en} cover" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:0">` : ''}
+        <div class="bk-icon">${b.icon}</div>
+        <div class="bk-title">${b.title}</div>
+        <div class="bk-en">${b.en}</div>
+      </div>
+      <div class="book-info">
+        <div class="bk-author">${b.author}</div>
+        <div class="bk-price-row">
+          <span class="bk-price">${copy.bookReadFree}</span>
+          <span class="badge-pdf">${copy.bookPdfBadge}</span>
+        </div>
+        <div class="book-actions">
+          <button class="btn-read" onclick="readBook('${b.en}')">${copy.readOnline}</button>
+          <button class="btn-read btn-download" onclick="openDL('${b.title}','${b.author}','${b.downloadPrice}','${b.en}')">${copy.downloadPdf}</button>
+        </div>
+      </div>`;
+    grid.appendChild(c);
+  });
+  animateCards();
+  const btn = document.getElementById('viewAllBooksBtn');
+  if(btn){
+    if(activeCategory) btn.textContent = copy.showFeatured;
+    else btn.textContent = showingAllBooks ? copy.showFeatured : copy.viewAllBooks.replace('{count}', books.length);
+  }
+}
+
+function toggleAllBooks(){
+  if(activeCategory){ activeCategory = null; showingAllBooks = false; }
+  else { showingAllBooks = !showingAllBooks; }
+  renderBooks();
+  document.getElementById('books').scrollIntoView({behavior:'smooth'});
+}
+
+function filterByCategory(cat){
+  activeCategory = cat;
+  showingAllBooks = true;
+  renderBooks();
+  const count = featuredBooks.filter(b => b.category === cat).length;
+  showNotif(count + ' book' + (count === 1 ? '' : 's') + ' in ' + cat + '.');
+  document.getElementById('books').scrollIntoView({behavior:'smooth'});
+}
 
 // scroll cards in
 const ro = new IntersectionObserver(entries => {
@@ -770,10 +1018,12 @@ const ro = new IntersectionObserver(entries => {
     }
   });
 },{threshold:.1,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.book-card,.cat-card,.step-card,.price-card,.testi-card').forEach(el=>{
-  el.style.opacity='0'; el.style.transform='translateY(22px)'; el.style.transition='opacity .5s ease,transform .5s ease';
-  ro.observe(el);
-});
+function animateCards(){
+  document.querySelectorAll('.book-card,.cat-card,.step-card,.price-card,.testi-card').forEach(el=>{
+    el.style.opacity='0'; el.style.transform='translateY(22px)'; el.style.transition='opacity .5s ease,transform .5s ease';
+    ro.observe(el);
+  });
+}
 
 // Nav scroll
 window.addEventListener('scroll',()=>{
@@ -783,8 +1033,10 @@ window.addEventListener('scroll',()=>{
 function toggleMenu(){ document.getElementById('mobMenu').classList.toggle('open'); }
 
 function openModal(tab){
+  if(window.event) window.event.preventDefault();
   document.getElementById('authModal').classList.add('active');
   document.body.style.overflow='hidden';
+  document.getElementById('mobMenu').classList.remove('open');
   switchTab(tab||'login');
 }
 function closeModal(){
@@ -796,11 +1048,142 @@ function switchTab(t){
   document.getElementById('signupTab').classList.toggle('active',t==='signup');
   document.getElementById('loginForm').style.display=t==='login'?'':'none';
   document.getElementById('signupForm').style.display=t==='signup'?'':'none';
+  clearAuthMessages();
 }
-function openDL(title,author,price){
+function getLanguagePreference(){
+  return localStorage.getItem(LANGUAGE_KEY) || 'te';
+}
+function getSiteCopy(){
+  const lang = siteCopy[getLanguagePreference()] ? getLanguagePreference() : 'te';
+  return siteCopy[lang];
+}
+function setLanguagePreference(value){
+  localStorage.setItem(LANGUAGE_KEY, value);
+  applyLanguagePreference(value);
+}
+function setText(selector,value){
+  const el = document.querySelector(selector);
+  if(el) el.textContent = value;
+}
+function setHTML(selector,value){
+  const el = document.querySelector(selector);
+  if(el) el.innerHTML = value;
+}
+function setAllText(selector,values){
+  document.querySelectorAll(selector).forEach((el,index) => {
+    if(values[index] !== undefined) el.textContent = values[index];
+  });
+}
+function applySiteLanguage(lang){
+  const copy = siteCopy[lang] || siteCopy.te;
+  setAllText('.nav-links a[href="#books"], .mob-menu a[href="#books"]', [copy.library, copy.library]);
+  setAllText('.nav-links a[href="#categories"], .mob-menu a[href="#categories"]', [copy.categories, copy.categories]);
+  setAllText('.nav-links a[href="#how"], .mob-menu a[href="#how"]', [copy.how, copy.how]);
+  setText('.hero-tagline', copy.heroTagline);
+  setText('.hero-ctas .btn-primary', copy.browseLibrary);
+  setText('.hero-ctas .btn-outline', copy.createAccount);
+  setHTML('.hero-trust', copy.heroTrust);
+  setAllText('.stat-label', [copy.booksAvailable, copy.accountSignup, copy.statCategories, copy.perPdf]);
+  setText('#books .sec-label', copy.collection);
+  setHTML('#books .sec-title', copy.featuredBooks);
+  setText('#categories .sec-label', copy.browseBy);
+  setHTML('#categories .sec-title', copy.categoryTitle);
+  setAllText('.cat-te', [copy.agamaTe, copy.dharmaTe, copy.puranasTe]);
+  setAllText('.cat-en', [copy.agamaEn, copy.dharmaEn, copy.puranasEn]);
+  setAllText('.cat-count', [copy.booksCount.replace('{count}', 3), copy.booksCount.replace('{count}', 5), copy.booksCount.replace('{count}', 6)]);
+  setText('#how .sec-label', copy.gettingStarted);
+  setHTML('#how .sec-title', copy.howTitle);
+  setAllText('.step-title', [copy.step1Title, copy.step2Title, copy.step3Title, copy.step4Title]);
+  setAllText('.step-desc', [copy.step1Desc, copy.step2Desc, copy.step3Desc, copy.step4Desc]);
+  setText('#pricing .sec-label', copy.membership);
+  setHTML('#pricing .sec-title', copy.planTitle);
+  setAllText('.plan-desc', [copy.shishyaDesc, copy.sadhakaDesc, copy.guruDesc]);
+  setText('.price-note', copy.priceNote);
+  setText('.testi-section .sec-label', copy.readerStories);
+  setHTML('.testi-section .sec-title', copy.readerTitle);
+  setText('.nl-text h3', copy.newsletterTitle);
+  setText('.nl-text p', copy.newsletterDesc);
+  setText('.nl-form .btn-primary', copy.subscribe);
+  setText('.foot-desc', copy.footerDesc);
+  setAllText('.foot-col-title', [copy.footerLibrary, copy.account, copy.support]);
+  setAllText('.foot-links a', [
+    copy.browseAll, copy.categories, copy.pdfPricing, copy.newArrivals, copy.freeBooks,
+    copy.createAccount, copy.signIn, copy.myLibrary, copy.downloads, copy.readingHistory,
+    copy.contact, copy.faq, copy.privacy, copy.terms, copy.refund
+  ]);
+  renderBooks();
+  updateAuthNav(auth?.currentUser || null);
+}
+function applyLanguagePreference(value){
+  const lang = authCopy[value] ? value : 'te';
+  const copy = authCopy[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if(copy[key]) el.textContent = copy[key];
+  });
+  const languageSelect = document.getElementById('languagePref');
+  const nameInput = document.getElementById('signupName');
+  const passwordInput = document.getElementById('signupPassword');
+  if(languageSelect) languageSelect.value = lang;
+  if(nameInput) nameInput.placeholder = copy.namePlaceholder;
+  if(passwordInput) passwordInput.placeholder = copy.passwordPlaceholder;
+  applySiteLanguage(lang);
+}
+function findBook(key){
+  return books.find(book => book.en === key || book.title === key);
+}
+async function readBook(key){
+  const book = findBook(key);
+  if(!book) return showNotif('Book not found.');
+  if(!auth || !auth.currentUser){
+    openModal('login');
+    showNotif('Please sign in to read books online.');
+    return;
+  }
+  const url = await resolveBookUrl(book);
+  if(url){
+    openReader(book, url);
+    return;
+  }
+  showNotif('Online reading link will be added for ' + book.en + '.');
+}
+async function resolveBookUrl(book){
+  // When remote reading is live, ask the backend for a short-lived signed URL (gated by Firebase
+  // sign-in); otherwise fall back to the public assets/ path.
+  if(USE_REMOTE_BOOKS && auth?.currentUser && book.id){
+    try {
+      const token = await auth.currentUser.getIdToken();
+      const res = await fetch(`${BOOK_URL_ENDPOINT}?id=${encodeURIComponent(book.id)}`, {
+        headers: { Authorization: 'Bearer ' + token }
+      });
+      if(!res.ok) throw new Error('status ' + res.status);
+      const data = await res.json();
+      if(data && data.url) return data.url;
+      throw new Error('no url');
+    } catch(e){
+      showNotif('Could not load this book right now. Please try again.');
+      return '';
+    }
+  }
+  return book.readUrl || '';
+}
+function openReader(book, url){
+  const src = url || book.readUrl || '';
+  document.getElementById('readerTitle').textContent = book.en || book.title;
+  document.getElementById('readerFrame').src = `${src}#toolbar=0&navpanes=0&scrollbar=1`;
+  document.getElementById('readerModal').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function closeReader(){
+  document.getElementById('readerModal').classList.remove('active');
+  document.getElementById('readerFrame').src = '';
+  document.body.style.overflow='';
+}
+let selectedDownloadBook = null;
+function openDL(title,author,price,key){
+  selectedDownloadBook = findBook(key || title) || { title, author, pdfUrl:'' };
   document.getElementById('dlTitle').textContent=title;
   document.getElementById('dlAuthor').textContent='by '+author;
-  document.getElementById('dlPrice').textContent=price;
   document.getElementById('dlModal').classList.add('active');
   document.body.style.overflow='hidden';
 }
@@ -808,8 +1191,83 @@ function closeDL(){
   document.getElementById('dlModal').classList.remove('active');
   document.body.style.overflow='';
 }
-function bgClose(e,id){ if(e.target===document.getElementById(id)){ id==='authModal'?closeModal():closeDL(); } }
+function openInfo(page){
+  if(window.event) window.event.preventDefault();
+  const content = getInfoPage(page);
+  if(!content) return;
+  document.getElementById('infoTitle').textContent = content.title;
+  document.getElementById('infoContent').innerHTML = content.html;
+  document.getElementById('infoModal').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function closeInfo(){
+  document.getElementById('infoModal').classList.remove('active');
+  document.body.style.overflow='';
+}
+function bgClose(e,id){
+  if(e.target!==document.getElementById(id)) return;
+  if(id==='authModal') closeModal();
+  else if(id==='dlModal') closeDL();
+  else if(id==='infoModal') closeInfo();
+  else if(id==='readerModal') closeReader();
+}
 function selPay(el){ document.querySelectorAll('.pay-method').forEach(m=>m.classList.remove('selected')); el.classList.add('selected'); }
+function accountAction(type){
+  if(window.event) window.event.preventDefault();
+  if(!auth || !auth.currentUser){
+    openModal('login');
+    showNotif('Please sign in to view your account.');
+    return;
+  }
+  const labels = { library:'My Library', downloads:'Downloads', history:'Reading History' };
+  showNotif((labels[type] || 'Account') + ' will show your saved activity as more books are added.');
+}
+function getPendingPurchases(){
+  try { return JSON.parse(localStorage.getItem(PENDING_PURCHASES_KEY)) || []; }
+  catch(e){ return []; }
+}
+function savePendingPurchase(book){
+  const user = auth?.currentUser;
+  const pending = getPendingPurchases();
+  const request = {
+    book: book.en || book.title,
+    email: user?.email || '',
+    uid: user?.uid || '',
+    amount: DOWNLOAD_PRICE,
+    status: 'payment_gateway_pending',
+    createdAt: new Date().toISOString()
+  };
+  const exists = pending.some(item => item.book === request.book && item.uid === request.uid && item.status === request.status);
+  if(!exists){
+    pending.push(request);
+    localStorage.setItem(PENDING_PURCHASES_KEY, JSON.stringify(pending));
+  }
+  return request;
+}
+function goToPlans(){
+  const pricing = document.getElementById('pricing');
+  if(pricing) pricing.scrollIntoView({behavior:'smooth'});
+}
+function planComingSoon(){
+  showNotif('Subscriptions are coming soon — payments are being set up. Create a free account to read every book online now.');
+  openModal('signup');
+}
+function completeDownloadPayment(){
+  if(!auth || !auth.currentUser){
+    closeDL();
+    openModal('login');
+    showNotif('Please sign in before downloading a PDF.');
+    return;
+  }
+  // Real ₹99 checkout lands in Phase 5. For now, save the request so we can notify the buyer.
+  if(PAYMENT_GATEWAY === 'pending'){
+    const request = savePendingPurchase(selectedDownloadBook || {});
+    closeDL();
+    showNotif('Purchase request saved for ' + request.book + '. Payment gateway will be connected shortly.');
+    return;
+  }
+  showNotif('Payment gateway will be connected here.');
+}
 
 let nt;
 function showNotif(msg){
@@ -817,12 +1275,615 @@ function showNotif(msg){
   n.textContent=msg; n.style.display='block';
   clearTimeout(nt); nt=setTimeout(()=>n.style.display='none',3500);
 }
+const firebaseConfig = {
+  apiKey: "AIzaSyD5gP-NRwge95NEfaNDqMbo4NuLSGCbWpM",
+  authDomain: "gayathri-prachuranalu.firebaseapp.com",
+  projectId: "gayathri-prachuranalu",
+  storageBucket: "gayathri-prachuranalu.firebasestorage.app",
+  messagingSenderId: "1067091106946",
+  appId: "1:1067091106946:web:ff766e24560b3d9f49289b",
+  measurementId: "G-6NKT6D2TJK"
+};
+
+const isFirebaseConfigured = Object.values(firebaseConfig).every(value => value && !value.startsWith('PASTE_'));
+const firebaseApp = isFirebaseConfigured ? initializeApp(firebaseConfig) : null;
+const auth = firebaseApp ? getAuth(firebaseApp) : null;
+const googleProvider = auth ? new GoogleAuthProvider() : null;
+// Phase 2: flip to true after uploading PDFs to Supabase and setting the Vercel env vars.
+// false = read PDFs from the public assets/ path (current).
+// true  = fetch a short-lived signed URL from the /api/book-url function (gated by Firebase sign-in).
+const USE_REMOTE_BOOKS = false;
+const BOOK_URL_ENDPOINT = '/api/book-url';
+const LANGUAGE_KEY = 'gp_language';
+const PAYMENT_GATEWAY = 'pending';
+const PENDING_PURCHASES_KEY = 'gp_pending_purchases';
+const infoPages = {
+  contact: {
+    title: 'Contact Us',
+    html: `
+      <p>We are here to help with account access, online reading, PDF downloads, payments, and book information.</p>
+      <h4>Email</h4>
+      <p><a href="mailto:info@gayatriprachuranalu.com">info@gayatriprachuranalu.com</a></p>
+      <h4>Support Hours</h4>
+      <p>Monday to Saturday, 10:00 AM to 6:00 PM IST. We usually respond within 1-2 business days.</p>
+      <h4>When Contacting Us</h4>
+      <ul>
+        <li>Share your registered email address.</li>
+        <li>Include the book title if your question is about a PDF or online reader.</li>
+        <li>For payments, include the transaction ID once payment integration is live.</li>
+      </ul>
+    `
+  },
+  faq: {
+    title: 'FAQ',
+    html: `
+      <h4>Is account creation free?</h4>
+      <p>Yes. Creating an account is free.</p>
+      <h4>Can I read books online for free?</h4>
+      <p>Yes. Every uploaded book can be read online for free after you create an account and sign in.</p>
+      <h4>How much is a PDF download?</h4>
+      <p>You can download any single book's PDF for ₹99. If you download often, the Sadhaka (₹199/month) and Guru (₹499/month) plans include downloads and work out cheaper.</p>
+      <h4>Can I pay today?</h4>
+      <p>Payment setup is being connected. Until then, every book is free to read online after sign-in, and your download requests are saved so we can notify you when checkout is live.</p>
+      <h4>Do I need a monthly subscription?</h4>
+      <p>No. You can read online free and pay ₹99 per book only when you want to download one. Subscriptions are optional for readers who download a lot.</p>
+      <h4>Why do some books show a designed cover instead of the original cover?</h4>
+      <p>Some uploaded PDFs do not yet have a matching cover image. Those books use a fallback design until the correct cover is added.</p>
+      <h4>Can I access books on mobile?</h4>
+      <p>Yes. The site works on phone, tablet, and desktop browsers.</p>
+    `
+  },
+  privacy: {
+    title: 'Privacy Policy',
+    html: `
+      <p><strong>Last updated:</strong> June 9, 2026</p>
+      <p>Gayatri Prachuranalu respects your privacy. This policy explains what information we collect and how we use it.</p>
+      <h4>Information We Collect</h4>
+      <ul>
+        <li>Your name and email address when you create an account.</li>
+        <li>Authentication information managed securely through Firebase Authentication.</li>
+        <li>Basic usage information such as book access and download activity when those features are enabled.</li>
+      </ul>
+      <h4>How We Use Information</h4>
+      <ul>
+        <li>To provide account access and online reading.</li>
+        <li>To support PDF purchases and download access.</li>
+        <li>To respond to support requests.</li>
+        <li>To improve the library experience.</li>
+      </ul>
+      <h4>Data Sharing</h4>
+      <p>We do not sell your personal information. We may use trusted service providers such as Firebase for authentication and payment providers for secure transactions.</p>
+      <h4>Payments</h4>
+      <p>When payment integration is enabled, payment details will be processed by the payment provider. We do not store card, UPI, or banking credentials on this website.</p>
+      <h4>Data Retention</h4>
+      <p>Account and purchase records may be retained as needed for access, support, fraud prevention, tax, accounting, and legal compliance.</p>
+      <h4>Your Choices</h4>
+      <p>You may contact us to request help with account access, correction of profile details, or account-related privacy questions.</p>
+      <h4>Contact</h4>
+      <p>For privacy questions, email <a href="mailto:info@gayatriprachuranalu.com">info@gayatriprachuranalu.com</a>.</p>
+    `
+  },
+  terms: {
+    title: 'Terms of Use',
+    html: `
+      <p><strong>Last updated:</strong> June 9, 2026</p>
+      <p>By using Gayatri Prachuranalu, you agree to these terms.</p>
+      <h4>Account Use</h4>
+      <ul>
+        <li>You are responsible for maintaining access to your registered email account.</li>
+        <li>You agree to provide accurate account information.</li>
+      </ul>
+      <h4>Online Reading</h4>
+      <p>Online reading is provided for personal, non-commercial use. Content may not be copied, redistributed, or republished without permission.</p>
+      <h4>PDF Downloads</h4>
+      <p>PDF downloads are for personal use by the purchasing user. Sharing paid PDF files publicly or commercially is not permitted.</p>
+      <h4>Account Security</h4>
+      <p>You are responsible for keeping your login access secure. Please notify us if you believe your account has been used without permission.</p>
+      <h4>Intellectual Property</h4>
+      <p>Books, cover images, website design, text, and other materials are provided for permitted reading and purchase use only. You may not scrape, reproduce, resell, upload, or redistribute the content without permission.</p>
+      <h4>Pricing</h4>
+      <p>Online reading is free for signed-in members. You can download a single book's PDF for ₹99, or subscribe to a monthly plan (currently Sadhaka ₹199/month and Guru ₹499/month) that includes downloads. Subscriptions renew automatically each month until cancelled.</p>
+      <h4>Service Availability</h4>
+      <p>We aim to keep the library available, but access may occasionally be interrupted for maintenance, hosting, network, payment provider, or storage issues.</p>
+      <h4>Changes</h4>
+      <p>We may update the library, pricing, features, or these terms as the service grows.</p>
+    `
+  },
+  refund: {
+    title: 'Refund Policy',
+    html: `
+      <p><strong>Last updated:</strong> June 9, 2026</p>
+      <p>We want readers to have a clear and fair download experience.</p>
+      <h4>Digital PDF Purchases</h4>
+      <p>Because PDFs are digital goods, completed downloads are generally non-refundable.</p>
+      <h4>Before Payment Gateway Launch</h4>
+      <p>Payment collection is not active yet. Until a payment gateway is connected, PDF purchase requests are not charged and do not create paid download access.</p>
+      <h4>Eligible Refund Cases</h4>
+      <ul>
+        <li>You were charged but did not receive access to the PDF.</li>
+        <li>The PDF file is corrupted or cannot be opened.</li>
+        <li>You were charged more than once for the same book by mistake.</li>
+      </ul>
+      <h4>Refund Window</h4>
+      <p>Please contact us within 7 days of purchase for refund review.</p>
+      <h4>How To Request Help</h4>
+      <p>Email <a href="mailto:info@gayatriprachuranalu.com">info@gayatriprachuranalu.com</a> with your registered email, book title, payment date, and transaction ID.</p>
+    `
+  }
+};
+const infoPagesTe = {
+  contact: {
+    title: 'మమ్మల్ని సంప్రదించండి',
+    html: `
+      <p>ఖాతా, ఆన్‌లైన్ చదవడం, PDF డౌన్లోడ్‌లు, చెల్లింపులు, పుస్తకాల వివరాలకు మేము సహాయం చేస్తాము.</p>
+      <h4>ఇమెయిల్</h4>
+      <p><a href="mailto:info@gayatriprachuranalu.com">info@gayatriprachuranalu.com</a></p>
+      <h4>సహాయం సమయం</h4>
+      <p>సోమవారం నుండి శనివారం వరకు, ఉదయం 10:00 నుండి సాయంత్రం 6:00 IST వరకు.</p>
+      <h4>సంప్రదించినప్పుడు</h4>
+      <ul><li>మీ నమోదు చేసిన ఇమెయిల్ పంపండి.</li><li>పుస్తకానికి సంబంధించిన ప్రశ్న అయితే పుస్తక పేరు పంపండి.</li><li>చెల్లింపుల కోసం ట్రాన్సాక్షన్ ID పంపండి.</li></ul>
+    `
+  },
+  faq: {
+    title: 'తరచుగా అడిగే ప్రశ్నలు',
+    html: `
+      <h4>ఖాతా ఉచితమా?</h4><p>అవును. ఖాతా సృష్టించడం ఉచితం.</p>
+      <h4>పుస్తకాలు ఆన్‌లైన్‌లో ఉచితంగా చదవవచ్చా?</h4><p>అవును. ఖాతా సృష్టించి సైన్ ఇన్ చేసిన తర్వాత ప్రతి పుస్తకాన్ని ఆన్‌లైన్‌లో ఉచితంగా చదవవచ్చు.</p>
+      <h4>PDF డౌన్లోడ్ ధర ఎంత?</h4><p>ఏ ఒక్క పుస్తకం PDFనైనా ₹99కు డౌన్‌లోడ్ చేసుకోవచ్చు. ఎక్కువగా డౌన్‌లోడ్ చేసేవారికి సాధక (నెలకు ₹199), గురు (నెలకు ₹499) ప్లాన్‌లలో డౌన్‌లోడ్‌లు కలిసి ఉంటాయి, చౌకగా పడతాయి.</p>
+      <h4>ఇప్పుడే చెల్లించవచ్చా?</h4><p>పేమెంట్ సెటప్ కనెక్ట్ అవుతోంది. అప్పటివరకు ప్రతి పుస్తకం సైన్ ఇన్ తర్వాత ఆన్‌లైన్‌లో ఉచితంగా చదవవచ్చు; చెక్‌అవుట్ ప్రారంభమైనప్పుడు తెలియజేయడానికి మీ డౌన్‌లోడ్ అభ్యర్థనలు సేవ్ అవుతాయి.</p>
+      <h4>నెలవారీ సభ్యత్వం అవసరమా?</h4><p>అవసరం లేదు. ఆన్‌లైన్‌లో ఉచితంగా చదవవచ్చు; ఒక పుస్తకం డౌన్‌లోడ్ కావాలంటే మాత్రమే ₹99 చెల్లించండి. ఎక్కువ డౌన్‌లోడ్ చేసేవారికి సభ్యత్వం ఐచ్ఛికం.</p>
+    `
+  },
+  privacy: {
+    title: 'గోప్యతా విధానం',
+    html: `
+      <p><strong>చివరి నవీకరణ:</strong> June 9, 2026</p>
+      <p>Gayatri Prachuranalu మీ గోప్యతను గౌరవిస్తుంది.</p>
+      <h4>మేము సేకరించే సమాచారం</h4>
+      <ul><li>ఖాతా కోసం పేరు మరియు ఇమెయిల్.</li><li>Firebase Authentication ద్వారా భద్రంగా నిర్వహించే లాగిన్ సమాచారం.</li><li>చదవడం మరియు డౌన్లోడ్‌లకు సంబంధించిన ప్రాథమిక వివరాలు.</li></ul>
+      <h4>వినియోగం</h4><p>ఖాతా సేవలు, ఆన్‌లైన్ చదవడం, PDF కొనుగోలు సహాయం, మరియు సపోర్ట్ కోసం మాత్రమే ఉపయోగిస్తాము.</p>
+      <h4>డేటా పంచుకోవడం</h4><p>మీ వ్యక్తిగత సమాచారాన్ని మేము అమ్మము.</p>
+      <h4>చెల్లింపులు</h4><p>పేమెంట్ గేట్‌వే ప్రారంభించిన తర్వాత చెల్లింపు వివరాలు పేమెంట్ ప్రొవైడర్ ద్వారా ప్రాసెస్ అవుతాయి. కార్డు, UPI, బ్యాంక్ వివరాలను ఈ వెబ్‌సైట్ నిల్వ చేయదు.</p>
+      <h4>డేటా నిల్వ</h4><p>ఖాతా, కొనుగోలు, సపోర్ట్, పన్ను, లెక్కలు, చట్టపరమైన అవసరాల కోసం కొన్ని రికార్డులు నిల్వ ఉండవచ్చు.</p>
+    `
+  },
+  terms: {
+    title: 'వినియోగ నిబంధనలు',
+    html: `
+      <p><strong>చివరి నవీకరణ:</strong> June 9, 2026</p>
+      <p>ఈ వెబ్‌సైట్ ఉపయోగించడం ద్వారా మీరు ఈ నిబంధనలను అంగీకరిస్తారు.</p>
+      <h4>ఆన్‌లైన్ చదవడం</h4><p>ఆన్‌లైన్ చదవడం వ్యక్తిగత, వాణిజ్యేతర వినియోగం కోసం మాత్రమే.</p>
+      <h4>PDF డౌన్లోడ్‌లు</h4><p>చెల్లించి డౌన్లోడ్ చేసిన PDFలు వ్యక్తిగత వినియోగం కోసం మాత్రమే. వాటిని పబ్లిక్‌గా పంచరాదు.</p>
+      <h4>ఖాతా భద్రత</h4><p>మీ లాగిన్ యాక్సెస్‌ను భద్రంగా ఉంచడం మీ బాధ్యత.</p>
+      <h4>మేధో సంపత్తి</h4><p>పుస్తకాలు, కవర్ చిత్రాలు, వెబ్‌సైట్ డిజైన్ మరియు ఇతర కంటెంట్ అనుమతించిన వినియోగం కోసం మాత్రమే. అనుమతి లేకుండా పంచడం, అమ్మడం, కాపీ చేయడం నిషేధం.</p>
+      <h4>ధర</h4><p>సైన్ ఇన్ చేసిన సభ్యులకు ఆన్‌లైన్ చదవడం ఉచితం. ఏ ఒక్క పుస్తకం PDFనైనా ₹99కు డౌన్‌లోడ్ చేసుకోవచ్చు, లేదా డౌన్‌లోడ్‌లు కలిసి ఉండే నెలవారీ ప్లాన్‌కు (ప్రస్తుతం సాధక నెలకు ₹199, గురు నెలకు ₹499) సభ్యత్వం తీసుకోవచ్చు. సభ్యత్వాలు రద్దు చేసే వరకు ప్రతి నెలా ఆటోమేటిక్‌గా రెన్యూ అవుతాయి.</p>
+    `
+  },
+  refund: {
+    title: 'రిఫండ్ విధానం',
+    html: `
+      <p><strong>చివరి నవీకరణ:</strong> June 9, 2026</p>
+      <p>డిజిటల్ PDF కొనుగోళ్లకు స్పష్టమైన మరియు న్యాయమైన విధానం పాటిస్తాము.</p>
+      <h4>పేమెంట్ ప్రారంభానికి ముందు</h4><p>ప్రస్తుతం పేమెంట్ కలెక్షన్ యాక్టివ్‌లో లేదు. పేమెంట్ గేట్‌వే కనెక్ట్ అయ్యే వరకు PDF అభ్యర్థనలకు చార్జ్ ఉండదు.</p>
+      <h4>రిఫండ్‌కు అర్హమైన సందర్భాలు</h4>
+      <ul><li>చెల్లింపు జరిగినా PDF యాక్సెస్ రాకపోవడం.</li><li>PDF ఫైల్ తెరుచుకోకపోవడం.</li><li>అదే పుస్తకానికి పొరపాటున రెండుసార్లు చార్జ్ కావడం.</li></ul>
+      <h4>సమయం</h4><p>కొనుగోలు చేసిన 7 రోజుల్లో మమ్మల్ని సంప్రదించండి.</p>
+    `
+  }
+};
+function getInfoPage(page){
+  const lang = getLanguagePreference();
+  if(lang === 'te') return infoPagesTe[page] || infoPages[page];
+  if(lang === 'both'){
+    const en = infoPages[page];
+    const te = infoPagesTe[page];
+    if(!en || !te) return en || te;
+    return { title: `${en.title} / ${te.title}`, html: `${en.html}<hr style="border:none;border-top:1px solid var(--border);margin:1rem 0">${te.html}` };
+  }
+  return infoPages[page];
+}
+const authCopy = {
+  en: {
+    tabLogin:'Sign In',
+    tabSignup:'Create Account',
+    email:'Email Address',
+    password:'Password',
+    fullName:'Full Name',
+    language:'Preferred Language',
+    loginSubmit:'Sign In to Library',
+    signupSubmit:'Create Free Account',
+    toSignup:"Don't have an account? Join free →",
+    toLogin:'Already have an account? Sign in →',
+    termsText:'By creating an account you agree to our Terms and Privacy Policy.',
+    namePlaceholder:'Your Name',
+    passwordPlaceholder:'Create a strong password'
+  },
+  te: {
+    tabLogin:'సైన్ ఇన్',
+    tabSignup:'ఖాతా సృష్టించండి',
+    email:'ఇమెయిల్ చిరునామా',
+    password:'పాస్వర్డ్',
+    fullName:'పూర్తి పేరు',
+    language:'భాష ఎంపిక',
+    loginSubmit:'లైబ్రరీకి సైన్ ఇన్',
+    signupSubmit:'ఉచిత ఖాతా సృష్టించండి',
+    toSignup:'ఖాతా లేదా? ఉచితంగా చేరండి →',
+    toLogin:'ఇప్పటికే ఖాతా ఉందా? సైన్ ఇన్ →',
+    termsText:'ఖాతా సృష్టించడం ద్వారా మీరు మా నిబంధనలు మరియు గోప్యతా విధానాన్ని అంగీకరిస్తారు.',
+    namePlaceholder:'మీ పేరు',
+    passwordPlaceholder:'బలమైన పాస్వర్డ్ సృష్టించండి'
+  }
+};
+authCopy.both = {
+  tabLogin:'Sign In / సైన్ ఇన్',
+  tabSignup:'Create Account / ఖాతా',
+  email:'Email Address / ఇమెయిల్',
+  password:'Password / పాస్వర్డ్',
+  fullName:'Full Name / పూర్తి పేరు',
+  language:'Preferred Language / భాష',
+  loginSubmit:'Sign In to Library',
+  signupSubmit:'Create Free Account',
+  toSignup:"Don't have an account? Join free →",
+  toLogin:'Already have an account? Sign in →',
+  termsText:'By creating an account you agree to our Terms and Privacy Policy.',
+  namePlaceholder:'మీ పేరు / Your Name',
+  passwordPlaceholder:'Create a strong password'
+};
+
+const siteCopy = {
+  en: {
+    library:'Library',
+    categories:'Categories',
+    how:'How It Works',
+    signIn:'Sign In',
+    joinFree:'Join Free',
+    signOut:'Sign Out',
+    heroTagline:'A sacred library of Telugu spiritual literature, devotional texts, and classical works — free to read online after sign-in.',
+    browseLibrary:'📚 Browse the Library',
+    createAccount:'Create Free Account',
+    heroTrust:'🔒 Secure & Trusted <span class="dot">·</span> 📖 Free Online Reading <span class="dot">·</span> 💳 ₹99 per Book or Subscribe',
+    booksAvailable:'Books Available',
+    accountSignup:'Account Signup',
+    statCategories:'Categories',
+    perPdf:'Per PDF',
+    collection:'Our Collection',
+    featuredBooks:'Featured Books <span>ప్ర‌ముఖ పుస్తకాలు</span>',
+    browseBy:'Browse By',
+    categoryTitle:'Categories <span>విభాగాలు</span>',
+    agamaTe:'ఆగమ గ్రంథాలు',
+    agamaEn:'Agama Related',
+    dharmaTe:'ధర్మ సూత్రాలు',
+    dharmaEn:'Dharma Sutras',
+    puranasTe:'పురాణాలు',
+    puranasEn:'Puranas',
+    booksCount:'{count} books',
+    gettingStarted:'Getting Started',
+    howTitle:'How It Works <span>ఎలా ఉపయోగించాలి</span>',
+    step1Title:'Create an Account',
+    step1Desc:'Register for free with your email. Sign in to read every book online at no cost.',
+    step2Title:'Browse the Library',
+    step2Desc:'Explore Telugu books across spiritual, devotional, literary, and classical categories. Open any title and read online free.',
+    step3Title:'Download PDF',
+    step3Desc:"Download any book's PDF for ₹99, or subscribe for downloads included. Online reading stays free for everyone.",
+    step4Title:'Read Anywhere',
+    step4Desc:'Access your library from any device — phone, tablet, or desktop. Your downloads never expire.',
+    membership:'Membership Plans',
+    planTitle:'Choose Your Plan <span>మీ ప్రణాళికను ఎంచుకోండి</span>',
+    shishyaDesc:'Free online reading',
+    sadhakaDesc:"The Practitioner's Plan",
+    guruDesc:'Unlimited Everything',
+    priceNote:'All signed-in members read online for free. Download any book for ₹99 — or subscribe for downloads included.',
+    readerStories:'Reader Stories',
+    readerTitle:'What Readers Say <span>పాఠకుల మాటలు</span>',
+    newsletterTitle:'Stay Connected with the Sacred',
+    newsletterDesc:'New arrivals, free books, and cultural events — in Telugu & English.',
+    subscribe:'Subscribe',
+    footerDesc:'Preserving and sharing the rich literary and spiritual heritage of Telugu language and culture — accessible to readers worldwide.',
+    footerLibrary:'Library',
+    browseAll:'Browse All Books',
+    pdfPricing:'PDF Pricing',
+    newArrivals:'New Arrivals',
+    freeBooks:'Free Books',
+    account:'Account',
+    myLibrary:'My Library',
+    downloads:'Downloads',
+    readingHistory:'Reading History',
+    support:'Support',
+    contact:'Contact Us',
+    faq:'FAQ',
+    privacy:'Privacy Policy',
+    terms:'Terms of Use',
+    refund:'Refund Policy',
+    bookReadFree:'Free with login',
+    bookPdfBadge:'PDF ₹99',
+    readOnline:'Read Online',
+    downloadPdf:'Download PDF ₹99',
+    viewAllBooks:'View All {count} Books →',
+    showFeatured:'Show Featured Books'
+  },
+  te: {
+    library:'లైబ్రరీ',
+    categories:'విభాగాలు',
+    how:'ఎలా ఉపయోగించాలి',
+    signIn:'సైన్ ఇన్',
+    joinFree:'ఉచితంగా చేరండి',
+    signOut:'సైన్ అవుట్',
+    heroTagline:'తెలుగు ఆధ్యాత్మిక సాహిత్యం, భక్తి గ్రంథాలు, శాస్త్రీయ రచనల పవిత్ర గ్రంథాలయం — సైన్ ఇన్ తర్వాత ఉచిత ఆన్‌లైన్ చదవడం.',
+    browseLibrary:'📚 లైబ్రరీ చూడండి',
+    createAccount:'ఉచిత ఖాతా సృష్టించండి',
+    heroTrust:'🔒 సురక్షితం <span class="dot">·</span> 📖 ఉచిత ఆన్‌లైన్ చదవడం <span class="dot">·</span> 💳 ఒక్కో పుస్తకం ₹99 లేదా సభ్యత్వం',
+    booksAvailable:'పుస్తకాలు',
+    accountSignup:'ఉచిత ఖాతా',
+    statCategories:'విభాగాలు',
+    perPdf:'ఒక్కో PDF',
+    collection:'మా సేకరణ',
+    featuredBooks:'ప్ర‌ముఖ పుస్తకాలు <span>Featured Books</span>',
+    browseBy:'విభాగాల వారీగా',
+    categoryTitle:'విభాగాలు <span>Categories</span>',
+    agamaTe:'ఆగమ గ్రంథాలు',
+    agamaEn:'Agama Related',
+    dharmaTe:'ధర్మ సూత్రాలు',
+    dharmaEn:'Dharma Sutras',
+    puranasTe:'పురాణాలు',
+    puranasEn:'Puranas',
+    booksCount:'{count} పుస్తకాలు',
+    gettingStarted:'ప్రారంభం',
+    howTitle:'ఎలా ఉపయోగించాలి <span>How It Works</span>',
+    step1Title:'ఖాతా సృష్టించండి',
+    step1Desc:'మీ ఇమెయిల్‌తో ఉచితంగా నమోదు చేసుకోండి. సైన్ ఇన్ తర్వాత ప్రతి పుస్తకాన్ని ఆన్‌లైన్‌లో ఉచితంగా చదవవచ్చు.',
+    step2Title:'లైబ్రరీ చూడండి',
+    step2Desc:'ఆధ్యాత్మిక, భక్తి, సాహిత్య, శాస్త్రీయ విభాగాల్లో తెలుగు పుస్తకాలను చూడండి.',
+    step3Title:'PDF డౌన్‌లోడ్',
+    step3Desc:'ఏ పుస్తకమైనా ₹99కు PDF డౌన్‌లోడ్ చేసుకోండి, లేదా సభ్యత్వంతో డౌన్‌లోడ్‌లు పొందండి. ఆన్‌లైన్ చదవడం అందరికీ ఉచితం.',
+    step4Title:'ఎక్కడైనా చదవండి',
+    step4Desc:'ఫోన్, టాబ్లెట్, డెస్క్‌టాప్‌లో మీ లైబ్రరీని ఉపయోగించండి.',
+    membership:'సభ్యత్వ ప్రణాళికలు',
+    planTitle:'మీ ప్రణాళికను ఎంచుకోండి <span>Choose Your Plan</span>',
+    shishyaDesc:'ఉచిత ఆన్‌లైన్ చదవడం',
+    sadhakaDesc:'సాధకుల కోసం ప్రణాళిక',
+    guruDesc:'పూర్తి సౌకర్యాలు',
+    priceNote:'సైన్ ఇన్ చేసిన సభ్యులు ఆన్‌లైన్‌లో ఉచితంగా చదవవచ్చు. ఏ పుస్తకమైనా ₹99కు డౌన్‌లోడ్ చేసుకోండి — లేదా సభ్యత్వంతో డౌన్‌లోడ్‌లు పొందండి.',
+    readerStories:'పాఠకుల అనుభవాలు',
+    readerTitle:'పాఠకుల మాటలు <span>What Readers Say</span>',
+    newsletterTitle:'పవిత్ర సాహిత్యంతో అనుసంధానం',
+    newsletterDesc:'కొత్త పుస్తకాలు, ఉచిత పుస్తకాలు, సాంస్కృతిక సమాచారం — తెలుగు మరియు ఇంగ్లీషులో.',
+    subscribe:'చందా పొందండి',
+    footerDesc:'తెలుగు భాషా సాంస్కృతిక, ఆధ్యాత్మిక వారసత్వాన్ని అందరికీ అందుబాటులో ఉంచుతున్నాం.',
+    footerLibrary:'లైబ్రరీ',
+    browseAll:'అన్ని పుస్తకాలు',
+    pdfPricing:'PDF ధర',
+    newArrivals:'కొత్త పుస్తకాలు',
+    freeBooks:'ఉచిత పుస్తకాలు',
+    account:'ఖాతా',
+    myLibrary:'నా లైబ్రరీ',
+    downloads:'డౌన్లోడ్‌లు',
+    readingHistory:'చదివిన చరిత్ర',
+    support:'సహాయం',
+    contact:'మమ్మల్ని సంప్రదించండి',
+    faq:'తరచుగా అడిగే ప్రశ్నలు',
+    privacy:'గోప్యతా విధానం',
+    terms:'వినియోగ నిబంధనలు',
+    refund:'రిఫండ్ విధానం',
+    bookReadFree:'లాగిన్‌తో ఉచితం',
+    bookPdfBadge:'PDF ₹99',
+    readOnline:'ఆన్‌లైన్ చదవండి',
+    downloadPdf:'PDF డౌన్‌లోడ్ ₹99',
+    viewAllBooks:'మొత్తం {count} పుస్తకాలు →',
+    showFeatured:'ప్ర‌ముఖ పుస్తకాలు చూపించండి'
+  }
+};
+siteCopy.both = {};
+Object.keys(siteCopy.en).forEach(key => {
+  siteCopy.both[key] = `${siteCopy.en[key]} / ${siteCopy.te[key]}`;
+});
+siteCopy.both.heroTrust = siteCopy.en.heroTrust;
+siteCopy.both.featuredBooks = 'Featured Books <span>ప్ర‌ముఖ పుస్తకాలు</span>';
+siteCopy.both.categoryTitle = 'Categories <span>విభాగాలు</span>';
+siteCopy.both.howTitle = 'How It Works <span>ఎలా ఉపయోగించాలి</span>';
+siteCopy.both.planTitle = 'Choose Your Plan <span>మీ ప్రణాళికను ఎంచుకోండి</span>';
+siteCopy.both.readerTitle = 'What Readers Say <span>పాఠకుల మాటలు</span>';
+
+function clearAuthMessages(){
+  document.querySelectorAll('.form-message').forEach(msg => {
+    msg.className = 'form-message';
+    msg.textContent = '';
+  });
+  document.querySelectorAll('.form-input.invalid').forEach(input => input.classList.remove('invalid'));
+}
+function setFormMessage(id,type,text){
+  const msg = document.getElementById(id);
+  if(!msg) return;
+  msg.className = 'form-message ' + type;
+  msg.textContent = text;
+}
+function markInvalid(inputs){
+  inputs.forEach(input => input.classList.add('invalid'));
+}
+function isValidEmail(email){
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+function authErrorMessage(error){
+  const code = error && error.code ? error.code : '';
+  if(code === 'auth/email-already-in-use') return 'An account with this email already exists. Please sign in.';
+  if(code === 'auth/invalid-email') return 'Please enter a valid email address.';
+  if(code === 'auth/weak-password') return 'Please use a stronger password with at least 6 characters.';
+  if(code === 'auth/invalid-credential' || code === 'auth/wrong-password' || code === 'auth/user-not-found') return 'No matching account found. Check your email and password.';
+  if(code === 'auth/popup-closed-by-user') return 'Google sign-in was closed before it finished.';
+  if(code === 'auth/unauthorized-domain') return 'This domain is not authorized in Firebase Authentication settings.';
+  return 'Authentication failed. Please try again.';
+}
+function ensureFirebaseReady(messageId){
+  if(auth) return true;
+  setFormMessage(messageId,'error','Firebase is not configured yet. Add your Firebase web app config in index.html first.');
+  return false;
+}
+function updateAuthNav(user){
+  const copy = getSiteCopy();
+  const signInLinks = [document.getElementById('navSignIn'), document.getElementById('mobSignIn')];
+  const joinLinks = [document.getElementById('navJoin'), document.getElementById('mobJoin')];
+
+  signInLinks.forEach(link => {
+    if(!link) return;
+    if(user){
+      const firstName = (user.displayName || user.email || 'Account').split(' ')[0];
+      link.textContent = firstName;
+      link.onclick = function(e){ e.preventDefault(); showNotif('You are signed in as ' + user.email + '.'); };
+    } else {
+      link.textContent = copy.signIn;
+      link.onclick = function(e){ e.preventDefault(); openModal('login'); };
+    }
+  });
+
+  joinLinks.forEach(link => {
+    if(!link) return;
+    if(user){
+      link.textContent = copy.signOut;
+      link.onclick = function(e){ e.preventDefault(); signOut(); };
+    } else {
+      link.textContent = copy.joinFree;
+      link.onclick = function(e){ e.preventDefault(); openModal('signup'); };
+    }
+  });
+}
+async function signOut(){
+  if(!auth){
+    updateAuthNav(null);
+    return;
+  }
+  await firebaseSignOut(auth);
+  showNotif('You have been signed out.');
+}
+async function handleSignup(e){
+  e.preventDefault();
+  clearAuthMessages();
+  if(!ensureFirebaseReady('signupMsg')) return;
+  const fields = e.currentTarget.querySelectorAll('.form-input');
+  const name = fields[0].value.trim();
+  const email = fields[1].value.trim().toLowerCase();
+  const password = fields[2].value;
+  const language = document.getElementById('languagePref')?.value || getLanguagePreference();
+  const invalid = [];
+
+  if(name.length < 2) invalid.push(fields[0]);
+  if(!isValidEmail(email)) invalid.push(fields[1]);
+  if(password.length < 6) invalid.push(fields[2]);
+
+  if(invalid.length){
+    markInvalid(invalid);
+    setFormMessage('signupMsg','error','Please enter your name, a valid email, and a password with at least 6 characters.');
+    return;
+  }
+
+  try {
+    setLanguagePreference(language);
+    const result = await createUserWithEmailAndPassword(auth, email, password);
+    await updateProfile(result.user, { displayName:name });
+    setFormMessage('signupMsg','success','Account created. Welcome to Gayatri Prachuranalu.');
+    showNotif('Account created. You are signed in.');
+    setTimeout(closeModal, 700);
+  } catch(error) {
+    if(error && (error.code === 'auth/email-already-in-use' || error.code === 'auth/invalid-email')) markInvalid([fields[1]]);
+    if(error && error.code === 'auth/weak-password') markInvalid([fields[2]]);
+    setFormMessage('signupMsg','error',authErrorMessage(error));
+  }
+}
+async function handleLogin(e){
+  e.preventDefault();
+  clearAuthMessages();
+  if(!ensureFirebaseReady('loginMsg')) return;
+  const fields = e.currentTarget.querySelectorAll('.form-input');
+  const email = fields[0].value.trim().toLowerCase();
+  const password = fields[1].value;
+
+  if(!isValidEmail(email) || !password){
+    const invalid = [];
+    if(!isValidEmail(email)) invalid.push(fields[0]);
+    if(!password) invalid.push(fields[1]);
+    markInvalid(invalid);
+    setFormMessage('loginMsg','error','Please enter your email and password.');
+    return;
+  }
+
+  try {
+    const result = await signInWithEmailAndPassword(auth, email, password);
+    setFormMessage('loginMsg','success','Signed in successfully.');
+    showNotif('Welcome back, ' + (result.user.displayName || result.user.email) + '.');
+    setTimeout(closeModal, 700);
+  } catch(error) {
+    markInvalid(Array.from(fields));
+    setFormMessage('loginMsg','error',authErrorMessage(error));
+  }
+}
+async function handleGoogleSignIn(){
+  clearAuthMessages();
+  if(!ensureFirebaseReady('loginMsg')) return;
+  try {
+    const result = await signInWithPopup(auth, googleProvider);
+    showNotif('Welcome, ' + (result.user.displayName || result.user.email) + '.');
+    closeModal();
+  } catch(error) {
+    setFormMessage('loginMsg','error',authErrorMessage(error));
+  }
+}
+function initAuth(){
+  applyLanguagePreference(getLanguagePreference());
+  const loginForm = document.getElementById('loginForm');
+  const signupForm = document.getElementById('signupForm');
+  const languageSelect = document.getElementById('languagePref');
+  if(languageSelect) languageSelect.addEventListener('change', e => setLanguagePreference(e.target.value));
+  if(loginForm){
+    const loginButton = loginForm.querySelector('.form-submit');
+    if(loginButton) loginButton.onclick = null;
+    loginForm.addEventListener('submit', handleLogin);
+  }
+  if(signupForm){
+    const signupButton = signupForm.querySelector('.form-submit');
+    if(signupButton) signupButton.onclick = null;
+    signupForm.addEventListener('submit', handleSignup);
+  }
+  const socialButton = document.querySelector('.social-btn');
+  if(socialButton){
+    socialButton.type = 'button';
+    socialButton.onclick = null;
+    socialButton.addEventListener('click', handleGoogleSignIn);
+  }
+  if(auth){
+    onAuthStateChanged(auth, user => updateAuthNav(user));
+  } else {
+    updateAuthNav(null);
+  }
+}
 function subscribeNL(){
   const e=document.getElementById('nlEmail');
   if(e&&e.value&&e.value.includes('@')){ showNotif('Subscribed! 🙏 Updates in Telugu & English.'); e.value=''; }
   else showNotif('Please enter a valid email address.');
 }
-document.addEventListener('keydown',e=>{ if(e.key==='Escape'){closeModal();closeDL();} });
+window.toggleMenu = toggleMenu;
+window.openModal = openModal;
+window.closeModal = closeModal;
+window.switchTab = switchTab;
+window.openDL = openDL;
+window.closeDL = closeDL;
+window.openInfo = openInfo;
+window.closeInfo = closeInfo;
+window.openReader = openReader;
+window.closeReader = closeReader;
+window.bgClose = bgClose;
+window.selPay = selPay;
+window.accountAction = accountAction;
+window.readBook = readBook;
+window.completeDownloadPayment = completeDownloadPayment;
+window.showNotif = showNotif;
+window.subscribeNL = subscribeNL;
+window.toggleAllBooks = toggleAllBooks;
+window.filterByCategory = filterByCategory;
+window.goToPlans = goToPlans;
+window.planComingSoon = planComingSoon;
+initAuth();
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){closeModal();closeDL();closeInfo();closeReader();} });
+document.addEventListener('contextmenu',e=>{
+  if(document.getElementById('readerModal').classList.contains('active')) e.preventDefault();
+});
 </script>
 </body>
 </html>

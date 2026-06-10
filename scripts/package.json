@@ -1,0 +1,15 @@
+{
+  "name": "gayatri-storage-scripts",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Compress the book PDFs and upload them to private Supabase Storage.",
+  "scripts": {
+    "compress": "node compress-pdfs.mjs",
+    "upload": "node upload-to-supabase.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "dotenv": "^16.4.5"
+  }
+}
