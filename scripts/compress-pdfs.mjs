@@ -44,9 +44,10 @@ const mb = b => (b / 1048576).toFixed(1) + ' MB';
 let totalIn = 0, totalOut = 0, done = 0, skipped = 0;
 for (const b of BOOKS) {
   const id = slugify(b.en);
-  const inAbs = path.join(ROOT, b.src);
-  if (!existsSync(inAbs)) { console.warn('SKIP (missing):', b.src); skipped++; continue; }
+  const inAbs = path.resolve(ROOT, b.src); // resolve() so absolute src paths (external folders) work too
   const outAbs = path.join(OUT_DIR, id + '.pdf');
+  if (existsSync(outAbs) && !process.env.FORCE) { console.log(`already done, skipping: ${id}.pdf`); skipped++; continue; }
+  if (!existsSync(inAbs)) { console.warn('SKIP (missing):', b.src); skipped++; continue; }
   const args = [
     '-sDEVICE=pdfwrite', '-dCompatibilityLevel=1.5',
     '-dDownsampleColorImages=true', `-dColorImageResolution=${DPI}`, '-dColorImageDownsampleType=/Bicubic',

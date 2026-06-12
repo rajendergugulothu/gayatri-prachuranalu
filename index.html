@@ -316,7 +316,7 @@
 .info-content ul { padding-left:1.1rem; margin:.4rem 0 .85rem; }
 .info-content li { margin-bottom:.35rem; }
 .info-content a { color:var(--saffron-dark); }
-.reader-modal { width:min(1100px,96vw); max-width:1100px; height:92vh; padding:1rem; display:flex; flex-direction:column; }
+.reader-modal { width:min(1500px,96vw); max-width:1500px; height:92vh; padding:1rem; display:flex; flex-direction:column; }
 .reader-head { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:.75rem; padding-right:2rem; }
 .reader-title { font-family:'Cinzel',Georgia,serif; font-size:1rem; color:var(--deep-brown); font-weight:700; }
 .reader-note { font-size:.74rem; color:var(--text-muted); }
@@ -427,7 +427,7 @@
 <!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stat-item">
-    <div class="stat-num" id="sn1">14</div>
+    <div class="stat-num" id="sn1">32</div>
     <div class="stat-label">Books Available</div>
   </div>
   <div class="stat-sep"></div>
@@ -437,7 +437,7 @@
   </div>
   <div class="stat-sep"></div>
   <div class="stat-item">
-    <div class="stat-num" id="sn3">3</div>
+    <div class="stat-num" id="sn3">4</div>
     <div class="stat-label">Categories</div>
   </div>
   <div class="stat-sep"></div>
@@ -472,19 +472,25 @@
       <span class="cat-icon">📿</span>
       <span class="cat-te">ఆగమ గ్రంథాలు</span>
       <span class="cat-en">Agama Related</span>
-      <span class="cat-count">3 books</span>
+      <span class="cat-count">9 books</span>
     </a>
     <a class="cat-card" href="#books" onclick="filterByCategory('Dharma Sutras');return false;">
       <span class="cat-icon">⚖️</span>
       <span class="cat-te">ధర్మ సూత్రాలు</span>
       <span class="cat-en">Dharma Sutras</span>
-      <span class="cat-count">5 books</span>
+      <span class="cat-count">10 books</span>
     </a>
     <a class="cat-card" href="#books" onclick="filterByCategory('Puranas');return false;">
       <span class="cat-icon">📖</span>
       <span class="cat-te">పురాణాలు</span>
       <span class="cat-en">Puranas</span>
-      <span class="cat-count">6 books</span>
+      <span class="cat-count">12 books</span>
+    </a>
+    <a class="cat-card" href="#books" onclick="filterByCategory('Aaradhana');return false;">
+      <span class="cat-icon">🛕</span>
+      <span class="cat-te">ఆరాధన</span>
+      <span class="cat-en">Aaradhana</span>
+      <span class="cat-count">1 book</span>
     </a>
   </div>
 </section>
@@ -804,18 +810,6 @@ const books = [
     coverUrl:"assets/covers/Cover_pages/1_manu_smruti.jpg"
   },
   {
-    title:"Aapasthambha Kalpasuthram",
-    author:"Gayatri Prachuranalu",
-    en:"Aapasthambha Kalpasuthram",
-    price:"₹99",
-    color:"#374151",
-    icon:"📘",
-    free:false,
-    readUrl:"assets/Books_to_upload/Dharma Sutras/part 1 aapasthambha kalpasuthram.pdf",
-    pdfUrl:"",
-    coverUrl:"assets/covers/Cover_pages/1_apastamba_kalpa_sutram1.jpg"
-  },
-  {
     title:"Shrimad Bhagavatham - Part 1",
     author:"Gayatri Prachuranalu",
     en:"Shrimad Bhagavatham - Part 1",
@@ -887,6 +881,25 @@ const books = [
     pdfUrl:"",
     coverUrl:"assets/covers/Cover_pages/1_bhagavatam_moolam2.jpg"
   },
+  { title:"Aagama Pramanyam", author:"Gayatri Prachuranalu", en:"Aagama Pramanyam", price:"₹99", color:"#7C2D12", icon:"📜", free:false, readUrl:"", pdfUrl:"", coverUrl:"", category:"Agama Related" },
+  { title:"Kriya Kairavachandrika - Part 1", author:"Gayatri Prachuranalu", en:"Kriya Kairavachandrika - Part 1", price:"₹99", color:"#1E3A5F", icon:"📿", free:false, readUrl:"", pdfUrl:"", coverUrl:"", category:"Agama Related" },
+  { title:"Kriya Kairavachandrika - Part 2", author:"Gayatri Prachuranalu", en:"Kriya Kairavachandrika - Part 2", price:"₹99", color:"#5B21B6", icon:"📿", free:false, readUrl:"", pdfUrl:"", coverUrl:"", category:"Agama Related" },
+  { title:"Shrimannarayana Samhita - Part 1", author:"Gayatri Prachuranalu", en:"Shrimannarayana Samhita - Part 1", price:"₹99", color:"#78350F", icon:"📜", free:false, readUrl:"", pdfUrl:"", coverUrl:"", category:"Agama Related" },
+  { title:"Saandilya Samhita", author:"Gayatri Prachuranalu", en:"Saandilya Samhita", price:"₹99", color:"#166534", icon:"🕉", free:false, readUrl:"", pdfUrl:"", coverUrl:"", category:"Agama Related" },
+  { title:"Shri Bhashyamu", author:"Gayatri Prachuranalu", en:"Shri Bhashyamu", price:"₹99", color:"#991B1B", icon:"📖", free:false, readUrl:"", pdfUrl:"", coverUrl:"", category:"Agama Related" },
+  { title:"Apastamba Dharma Sutram", author:"Gayatri Prachuranalu", en:"Apastamba Dharma Sutram", price:"₹99", color:"#1E3A5F", icon:"⚖", free:false, readUrl:"", pdfUrl:"", coverUrl:"assets/covers/Cover_pages/1_apastamba_dharmasutram1.jpg", category:"Dharma Sutras" },
+  { title:"Apastamba Gruhya Sutramu", author:"Gayatri Prachuranalu", en:"Apastamba Gruhya Sutramu", price:"₹99", color:"#374151", icon:"🏛", free:false, readUrl:"", pdfUrl:"", coverUrl:"assets/covers/Cover_pages/1_apastamba_gruhyasutram1.jpg", category:"Dharma Sutras" },
+  { title:"Bodhayana Gruhya Sutramu", author:"Gayatri Prachuranalu", en:"Bodhayana Gruhya Sutramu", price:"₹99", color:"#5B21B6", icon:"🏛", free:false, readUrl:"", pdfUrl:"", coverUrl:"assets/covers/Cover_pages/1_Bodhayana_gruhya1.jpg", category:"Dharma Sutras" },
+  { title:"Parashara Smruti", author:"Gayatri Prachuranalu", en:"Parashara Smruti", price:"₹99", color:"#166534", icon:"📚", free:false, readUrl:"", pdfUrl:"", coverUrl:"assets/covers/Cover_pages/1_parashara_smriti.jpg", category:"Dharma Sutras" },
+  { title:"Aashvalayana Sutram", author:"Gayatri Prachuranalu", en:"Aashvalayana Sutram", price:"₹99", color:"#92400E", icon:"📘", free:false, readUrl:"", pdfUrl:"", coverUrl:"", category:"Dharma Sutras" },
+  { title:"Aapasthambha Kalpasuthram - Part 2", author:"Gayatri Prachuranalu", en:"Aapasthambha Kalpasuthram - Part 2", price:"₹99", color:"#374151", icon:"📘", free:false, readUrl:"", pdfUrl:"", coverUrl:"assets/covers/Cover_pages/1_apastamba_kalpa_sutram2.jpg", category:"Dharma Sutras" },
+  { title:"Shrimad Bhagavatham - Part 3", author:"Gayatri Prachuranalu", en:"Shrimad Bhagavatham - Part 3", price:"₹99", color:"#7C2D12", icon:"🙏", free:false, readUrl:"", pdfUrl:"", coverUrl:"assets/covers/Cover_pages/1_bhagavatam_moolam1.jpg", category:"Puranas" },
+  { title:"Shrimad Bhagavatham - Part 5", author:"Gayatri Prachuranalu", en:"Shrimad Bhagavatham - Part 5", price:"₹99", color:"#78350F", icon:"🙏", free:false, readUrl:"", pdfUrl:"", coverUrl:"assets/covers/Cover_pages/1_bhagavatam_moolam2.jpg", category:"Puranas" },
+  { title:"Shrimad Bhagavatham - Part 7", author:"Gayatri Prachuranalu", en:"Shrimad Bhagavatham - Part 7", price:"₹99", color:"#1A4731", icon:"🙏", free:false, readUrl:"", pdfUrl:"", coverUrl:"assets/covers/Cover_pages/1_bhagavatam_moolam1.jpg", category:"Puranas" },
+  { title:"Shrimad Bhagavatham - Part 10", author:"Gayatri Prachuranalu", en:"Shrimad Bhagavatham - Part 10", price:"₹99", color:"#5B21B6", icon:"🙏", free:false, readUrl:"", pdfUrl:"", coverUrl:"assets/covers/Cover_pages/1_bhagavatam_moolam2.jpg", category:"Puranas" },
+  { title:"Shrimad Bhagavatham - Parayana Paddhathi", author:"Gayatri Prachuranalu", en:"Shrimad Bhagavatham - Parayana Paddhathi", price:"₹99", color:"#991B1B", icon:"📖", free:false, readUrl:"", pdfUrl:"", coverUrl:"", category:"Puranas" },
+  { title:"Sundara Kanda", author:"Gayatri Prachuranalu", en:"Sundara Kanda", price:"₹99", color:"#1E3A5F", icon:"🙏", free:false, readUrl:"", pdfUrl:"", coverUrl:"", category:"Puranas" },
+  { title:"Bhagavadaaradhana Prayogamu", author:"Gayatri Prachuranalu", en:"Bhagavadaaradhana Prayogamu", price:"₹99", color:"#7C2D12", icon:"🛕", free:false, readUrl:"", pdfUrl:"", coverUrl:"assets/covers/Cover_pages/1_bhagavaaradhana_prayogam.jpg", category:"Aaradhana" },
 ];
 
 const DOWNLOAD_PRICE = "₹99";
@@ -1050,7 +1063,7 @@ function applySiteLanguage(lang){
   setHTML('#categories .sec-title', copy.categoryTitle);
   setAllText('.cat-te', [copy.agamaTe, copy.dharmaTe, copy.puranasTe]);
   setAllText('.cat-en', [copy.agamaEn, copy.dharmaEn, copy.puranasEn]);
-  setAllText('.cat-count', [copy.booksCount.replace('{count}', 3), copy.booksCount.replace('{count}', 5), copy.booksCount.replace('{count}', 6)]);
+  setAllText('.cat-count', [copy.booksCount.replace('{count}', 9), copy.booksCount.replace('{count}', 10), copy.booksCount.replace('{count}', 12)]);
   setText('#how .sec-label', copy.gettingStarted);
   setHTML('#how .sec-title', copy.howTitle);
   setAllText('.step-title', [copy.step1Title, copy.step2Title, copy.step3Title, copy.step4Title]);
@@ -1137,7 +1150,7 @@ function openReader(book, url){
   frame.onload = hide;
   clearTimeout(window._readerTimer);
   window._readerTimer = setTimeout(hide, 12000); // fallback so the spinner never sticks
-  frame.src = `${src}#toolbar=0&navpanes=0&scrollbar=1`;
+  frame.src = `${src}#toolbar=0&navpanes=0&view=FitH&zoom=page-width`;
   document.getElementById('readerModal').classList.add('active');
   document.body.style.overflow='hidden';
 }

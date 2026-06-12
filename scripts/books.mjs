@@ -19,4 +19,29 @@ export const BOOKS = [
   { en: 'Shrimad Bhagavatham - Part 6',       src: 'assets/Books_to_upload/Puranas/Shrimad Bhagavatham/Part 6(8,9sk) shrimad Bhagavatham.pdf' },
   { en: 'Shrimad Bhagavatam - Part 8',        src: 'assets/Books_to_upload/Puranas/Shrimad Bhagavatham/Part 8 (10 SK) Shrimadbhagavatam.pdf' },
   { en: 'Shrimad Bhagavatham - Part 9',       src: 'assets/Books_to_upload/Puranas/Shrimad Bhagavatham/Part 9(10sk) Shrimad Bagavatham .pdf' },
+
+  // --- Added from the full library export (extracted to Downloads/books_extracted) ---
+  // Agama Related
+  { en: 'Aagama Pramanyam',                   src: 'C:/Users/rajjr/Downloads/books_extracted/Books_to_upload/Agama Related/Aagama pramanyam.pdf' },
+  { en: 'Kriya Kairavachandrika - Part 1',    src: 'C:/Users/rajjr/Downloads/books_extracted/Books_to_upload/Agama Related/Part 1 Kriya Kairavachandrika.pdf' },
+  { en: 'Kriya Kairavachandrika - Part 2',    src: 'C:/Users/rajjr/Downloads/books_extracted/Books_to_upload/Agama Related/part 2 kriya kairavachandrika.pdf' },
+  { en: 'Shrimannarayana Samhita - Part 1',   src: 'C:/Users/rajjr/Downloads/books_extracted/Books_to_upload/Agama Related/Part 1 Shrimannarayana Samhita.pdf' },
+  { en: 'Saandilya Samhita',                  src: 'C:/Users/rajjr/Downloads/books_extracted/Books_to_upload/Agama Related/Saandilya Samhitha.pdf' },
+  { en: 'Shri Bhashyamu',                     src: 'C:/Users/rajjr/Downloads/books_extracted/Books_to_upload/Agama Related/Shri Bhashyamu.pdf' },
+  // Dharma Sutras
+  { en: 'Apastamba Dharma Sutram',            src: 'C:/Users/rajjr/Downloads/books_extracted/Books_to_upload/Dharma Sutras/Apastambha Dharma Sutram.pdf' },
+  { en: 'Apastamba Gruhya Sutramu',           src: 'C:/Users/rajjr/Downloads/books_extracted/Books_to_upload/Dharma Sutras/Apastmba Gruhya Sutramu.pdf' },
+  { en: 'Bodhayana Gruhya Sutramu',           src: 'C:/Users/rajjr/Downloads/books_extracted/Books_to_upload/Dharma Sutras/Bodhayana Gruhya Sutramu.pdf' },
+  { en: 'Parashara Smruti',                   src: 'C:/Users/rajjr/Downloads/books_extracted/Books_to_upload/Dharma Sutras/Parashara Smruti.pdf' },
+  { en: 'Aashvalayana Sutram',                src: 'C:/Users/rajjr/Downloads/books_extracted/Books_to_upload/Dharma Sutras/AASHWALAYANA Final  Book-1.pdf' },
+  { en: 'Aapasthambha Kalpasuthram - Part 2', src: 'C:/Users/rajjr/Downloads/books_extracted/Books_to_upload/Dharma Sutras/006 Part 2 aapasthambha kalpasuthram.pdf' },
+  // Puranas
+  { en: 'Shrimad Bhagavatham - Part 3',       src: 'C:/Users/rajjr/Downloads/books_extracted/Books_to_upload/Puranas/Shrimad Bhagavatham/Part 3 (4sk) shrimadbhagavatham.pdf' },
+  { en: 'Shrimad Bhagavatham - Part 5',       src: 'C:/Users/rajjr/Downloads/books_extracted/Books_to_upload/Puranas/Shrimad Bhagavatham/Part 5 ( 7 sk) shrimad Bhagavatham .pdf' },
+  { en: 'Shrimad Bhagavatham - Part 7',       src: 'C:/Users/rajjr/Downloads/books_extracted/Books_to_upload/Puranas/Shrimad Bhagavatham/Part 7 (10sk) Shrimadbhagavatam .pdf' },
+  { en: 'Shrimad Bhagavatham - Part 10',      src: 'C:/Users/rajjr/Downloads/books_extracted/Books_to_upload/Puranas/Shrimad Bhagavatham/Part 10 (11, 12sk) Shrimad Bgavatham.pdf' },
+  { en: 'Shrimad Bhagavatham - Parayana Paddhathi', src: 'C:/Users/rajjr/Downloads/books_extracted/Books_to_upload/Puranas/Shrimad Bhagavatham/Shrimad Bhagavatham Parayana Paddhathi.pdf' },
+  { en: 'Sundara Kanda',                      src: 'C:/Users/rajjr/Downloads/books_extracted/Books_to_upload/Puranas/Sundara Kanda.pdf' },
+  // Aaradhana
+  { en: 'Bhagavadaaradhana Prayogamu',        src: 'C:/Users/rajjr/Downloads/books_extracted/Books_to_upload/Aaradhana/Bhagavadaaradhana Prayogamu.pdf' },
 ];
